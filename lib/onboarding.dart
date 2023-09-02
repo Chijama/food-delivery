@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:food_delivery/sign_up.dart';
+import 'package:food_delivery/create_account.dart';
+import 'package:food_delivery/utils/strings.dart';
 import 'package:food_delivery/utils/theme.dart';
 import 'package:food_delivery/utils/widgets.dart';
 
 class Onboarding extends StatefulWidget {
+  const Onboarding({super.key});
+
   @override
   State<Onboarding> createState() => _OnboardingState();
 }
@@ -22,7 +25,7 @@ class _OnboardingState extends State<Onboarding> {
       backgroundColor: Themes().backgroundColor,
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,12 +38,12 @@ class _OnboardingState extends State<Onboarding> {
                     scrollDirection: Axis.horizontal,
                     controller: pageViewcontroller,
                     children: <Widget>[
-                      slided('assets/fries.jpeg', 'Order Food',
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum dapibus '),
-                      slided('assets/kebab.jpeg', 'Order Food',
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum dapibus '),
-                      slided('assets/ricexchicken.jpeg', 'Order Food',
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum dapibus '),
+                      slided(Strings.imgKebab, Strings.orderFood,
+                          Strings.shortLorem),
+                      slided(Strings.imgFries, Strings.orderFood,
+                          Strings.shortLorem),
+                      slided(Strings.imgRicsxChicken, Strings.orderFood,
+                          Strings.shortLorem),
                     ],
                     onPageChanged: (int index) {
                       setState(() {
@@ -65,17 +68,27 @@ class _OnboardingState extends State<Onboarding> {
                       Navigator.push(
                           context,
                           MaterialPageRoute<Widget>(
-                              builder: (BuildContext context) => SignUp()));
+                              builder: (BuildContext context) =>
+                                  const CreateAccount()));
                     }
                   },
-                  text: 'Next',
+                  text: Strings.next,
                 ),
-                SizedBox(height: 10,),
-                TextButton(onPressed:(){                      Navigator.push(
-                          context,
-                          MaterialPageRoute<Widget>(
-                              builder: (BuildContext context) => SignUp()));} ,
-                  child: Text('Skip',style: TextStyles().greenTextStyle400(),),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<Widget>(
+                            builder: (BuildContext context) =>
+                                const CreateAccount()));
+                  },
+                  child: Text(
+                    Strings.skip,
+                    style: TextStyles().greenTextStyle400(),
+                  ),
                 )
               ]),
         ),
@@ -98,14 +111,14 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Text(
           text1,
           style: TextStyles().blackTextStyle700(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Text(
@@ -113,7 +126,7 @@ class _OnboardingState extends State<Onboarding> {
           textAlign: TextAlign.center,
           style: TextStyles().blackTextStyle400(),
         ),
-        SizedBox(height: 13.5),
+        const SizedBox(height: 13.5),
       ],
     );
   }
@@ -140,9 +153,9 @@ class CustDotIndicator extends StatelessWidget {
       position: currentPage,
       decorator: DotsDecorator(
           color: Colors.transparent,
-          activeSize: const Size(17, 17),
+          activeSize: const Size(16, 16),
           spacing: const EdgeInsets.fromLTRB(3.0, 10, 3, 10),
-          size: const Size(17, 17),
+          size: const Size(16, 16),
           activeColor: Themes().primaryColor,
           activeShape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
