@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/checkout_order.dart';
+import 'package:food_delivery/create_account.dart';
+import 'package:food_delivery/create_new_pin.dart';
+import 'package:food_delivery/dashboard_nav_bar.dart';
 import 'package:food_delivery/log_in.dart';
 import 'package:food_delivery/onboarding.dart';
 
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LogIn(),
+      home: Checkout(),
     );
   }
 }

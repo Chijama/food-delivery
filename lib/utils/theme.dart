@@ -10,7 +10,9 @@ class Themes {
   Color seaShellColor = const Color(0xffFFF3E7);
 
   Color blackColor = Colors.black;
-  Color backgroundColor = Colors.white;
+  Color whiteBackgroundColor = Colors.white;
+  Color backgroundColor = const Color(0xffFAFAFA);
+
   Color whiteColor = Colors.white;
 }
 
@@ -25,11 +27,16 @@ class TextStyles {
 
   //Green Text
 
-  TextStyle greenTextStyle400() => GoogleFonts.inter(
+  TextStyle greenTextStyle400Underline() => GoogleFonts.inter(
       color: Themes().greenColor,
       fontWeight: FontWeight.w400,
       fontSize: 12,
       decoration: TextDecoration.underline);
+  TextStyle greenTextStyle400() => GoogleFonts.inter(
+        color: Themes().greenColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 12,
+      );
   TextStyle greenTextStyle600() => GoogleFonts.inter(
         color: Themes().greenColor,
         fontWeight: FontWeight.w600,
@@ -61,7 +68,55 @@ class TextStyles {
     return GoogleFonts.inter(
       color: Themes().whiteColor,
       fontWeight: FontWeight.w500,
+      fontSize: 13,
+    );
+  }
+    TextStyle whiteTextStyle400() {
+    return GoogleFonts.inter(
+      color: Themes().whiteColor,
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+    );
+  }
+
+  TextStyle whiteTextStyle700() {
+    return GoogleFonts.inter(
+      color: Themes().whiteColor,
+      fontWeight: FontWeight.w700,
+      fontSize: 22,
+    );
+  }
+  //Orange style
+
+  TextStyle orangeTextStyle400() {
+    return GoogleFonts.inter(
+      color: Themes().primaryColor,
+      fontWeight: FontWeight.w400,
       fontSize: 14,
+    );
+  }
+
+  TextStyle orangeTextStyle500() {
+    return GoogleFonts.inter(
+      color: Themes().primaryColor,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+    );
+  }
+
+  TextStyle orangeTextStyle600() {
+    return GoogleFonts.inter(
+      color: Themes().primaryColor,
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+    );
+  }
+
+  TextStyle orangeTextStyle700() {
+    return GoogleFonts.inter(
+      color: Themes().primaryColor,
+      fontWeight: FontWeight.w700,
+      fontSize: 19,
     );
   }
 
@@ -74,12 +129,26 @@ class TextStyles {
       fontSize: 14,
     );
   }
-
+TextStyle blackTextStyle500() {
+    return GoogleFonts.inter(
+      color: Themes().blackColor,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+    );
+  }
   TextStyle blackTextStyle600() {
     return GoogleFonts.inter(
       color: Themes().blackColor,
       fontWeight: FontWeight.w600,
       fontSize: 14,
+    );
+  }
+
+    TextStyle black17TextStyle600() {
+    return GoogleFonts.inter(
+      color: Themes().blackColor,
+      fontWeight: FontWeight.w600,
+      fontSize: 19,
     );
   }
 

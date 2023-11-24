@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/create_account.dart';
+import 'package:food_delivery/forgot_passwod.dart';
 import 'package:food_delivery/utils/strings.dart';
 import 'package:food_delivery/utils/theme.dart';
 import 'package:food_delivery/utils/widgets.dart';
@@ -16,7 +17,7 @@ class LogIn extends StatefulWidget {
 
 class _LogInState extends State<LogIn> {
   bool isRememberMesaved = false;
-    //Remember toggle button function
+  //Remember toggle button function
 
   void toggleSwitch(bool value) {
     if (isRememberMesaved == false) {
@@ -31,6 +32,7 @@ class _LogInState extends State<LogIn> {
       log('Switch Button is OFF');
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -46,7 +48,7 @@ class _LogInState extends State<LogIn> {
           backgroundColor: Colors.transparent,
         ),
         Scaffold(
-            backgroundColor: Themes().backgroundColor,
+            backgroundColor: Themes().whiteBackgroundColor,
             body: NestedScrollView(
                 floatHeaderSlivers: true,
                 headerSliverBuilder:
@@ -131,27 +133,29 @@ class _LogInState extends State<LogIn> {
                                         width: 10,
                                       ),
                                       Text(Strings.rememberMe,
-                                          style: TextStyles().blackTextStyle400())
+                                          style:
+                                              TextStyles().blackTextStyle400())
                                     ],
                                   ),
                                   InkWell(
-                                    onTap: () async {
-                                      // await Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) =>
-                                      //         const ForgotpasswordWidget(),
-                                      //   ),
-                                      // );
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ForgotPassword(),
+                                        ),
+                                      );
                                     },
                                     child: Text(Strings.forgotPassword,
-                                        style: TextStyles().greenTextStyle400()),
+                                        style: TextStyles()
+                                            .greenTextStyle400Underline()),
                                   ),
                                 ],
                               ),
-                            const SizedBox(
-                                        height: 40,
-                                      ),
+                              const SizedBox(
+                                height: 40,
+                              ),
                               MyButton(
                                 text: Strings.logIn,
                                 onPressed: () {
@@ -174,48 +178,6 @@ class _LogInState extends State<LogIn> {
                         ]),
                   ),
                 ))),
-      ],
-    );
-  }
-}
-
-class TextBoxWidget extends StatelessWidget {
-  const TextBoxWidget({
-    this.label,
-    this.controller,
-    super.key,
-  });
-  final String? label;
-  final TextEditingController? controller;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label.toString(),
-          style: TextStyles().blackTextStyle(14, FontWeight.w500),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Container(
-          height: 45,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          decoration: BoxDecoration(
-              color: Themes().seaShellColor,
-              borderRadius: const BorderRadius.all(Radius.circular(16))),
-          child: TextFormField(
-            controller: controller,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
       ],
     );
   }

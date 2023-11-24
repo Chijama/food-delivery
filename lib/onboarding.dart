@@ -22,7 +22,7 @@ class _OnboardingState extends State<Onboarding> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Themes().backgroundColor,
+      backgroundColor: Themes().whiteBackgroundColor,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20),
@@ -87,7 +87,7 @@ class _OnboardingState extends State<Onboarding> {
                   },
                   child: Text(
                     Strings.skip,
-                    style: TextStyles().greenTextStyle400(),
+                    style: TextStyles().greenTextStyle400Underline(),
                   ),
                 )
               ]),

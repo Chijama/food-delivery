@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/log_in.dart';
+import 'package:food_delivery/otp.dart';
 import 'package:food_delivery/utils/strings.dart';
 import 'package:food_delivery/utils/theme.dart';
 import 'package:food_delivery/utils/widgets.dart';
@@ -27,7 +28,7 @@ class _CreateAccountState extends State<CreateAccount> {
           backgroundColor: Colors.transparent,
         ),
         Scaffold(
-            backgroundColor: Themes().backgroundColor,
+            backgroundColor: Themes().whiteBackgroundColor,
             body: NestedScrollView(
                 floatHeaderSlivers: true,
                 headerSliverBuilder:
@@ -48,11 +49,13 @@ class _CreateAccountState extends State<CreateAccount> {
                                 ])),
                           ),
                           title: TextButton(
-                            onPressed: () {                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute<Widget>(
-                                          builder: (BuildContext context) =>
-                                              const LogIn()));},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute<Widget>(
+                                      builder: (BuildContext context) =>
+                                          const LogIn()));
+                            },
                             child: const Text(Strings.logIn),
                           )),
                       pinned: true,
@@ -77,8 +80,12 @@ class _CreateAccountState extends State<CreateAccount> {
                   padding: const EdgeInsets.all(20),
                   child: SingleChildScrollView(
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          const SizedBox(
+                            height: 25,
+                          ),
                           Text(
                             Strings.imHungry,
                             style: TextStyles().greenTextStyleBig600(),
@@ -104,7 +111,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                       context,
                                       MaterialPageRoute<Widget>(
                                           builder: (BuildContext context) =>
-                                              const CreateAccount()));
+                                              const OtpWidget()));
                                 },
                               ),
                               const SizedBox(
@@ -119,48 +126,6 @@ class _CreateAccountState extends State<CreateAccount> {
                         ]),
                   ),
                 ))),
-      ],
-    );
-  }
-}
-
-class TextBoxWidget extends StatelessWidget {
-  const TextBoxWidget({
-    this.label,
-    this.controller,
-    super.key,
-  });
-  final String? label;
-  final TextEditingController? controller;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label.toString(),
-          style: TextStyles().blackTextStyle(14, FontWeight.w500),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Container(
-          height: 45,
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          decoration: BoxDecoration(
-              color: Themes().seaShellColor,
-              borderRadius: const BorderRadius.all(Radius.circular(16))),
-          child: TextFormField(
-            controller: controller,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
       ],
     );
   }
