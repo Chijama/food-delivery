@@ -105,14 +105,16 @@ class TextStyles {
       fontSize: 17,
     );
   }
-   //Grey Text
+
+  //Grey Text
   TextStyle greyWeight400size13() {
     return GoogleFonts.signika(
-      color:  const Color(0xff292D3299),
+      color: const Color(0xff292d3299),
       fontWeight: FontWeight.w400,
       fontSize: 13,
     );
   }
+
   TextStyle greyWeight400size17() {
     return GoogleFonts.signika(
       color: Themes().dark60,
@@ -123,5 +125,4 @@ class TextStyles {
 
 // White Text
 //Pink Text
- 
 }

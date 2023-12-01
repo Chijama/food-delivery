@@ -8,10 +8,6 @@ class Strings {
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';
 
-
-
-
-
   static const String groceryImage = 'assets/images/grocery.png';
   static const String burgerImage = 'assets/images/burger.png';
   static const String sweetsImage = 'assets/images/sweets.png';
@@ -20,10 +16,4 @@ class Strings {
   static const String offersImage = 'assets/images/offers.png';
   static const String kfcImage = 'assets/images/kfc.png';
   static const String harveysImage = 'assets/images/harveys.png';
-
-
-
-
-
 }
-

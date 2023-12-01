@@ -12,13 +12,12 @@ class Search extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: Themes().light80,
-          borderRadius: BorderRadius.all(Radius.circular(14))),
+          borderRadius: const BorderRadius.all(Radius.circular(14))),
       child: TextFormField(
         decoration: InputDecoration(
             border: InputBorder.none,
             prefixIcon: SvgPicture.asset(
               Strings.searchIcon,
-              color: Themes().blue100,
             ),
             hintText: hintText,
             hintStyle: TextStyles().greyWeight400size17()),
@@ -41,11 +40,11 @@ class CategoryItem extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Image.asset(image),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(

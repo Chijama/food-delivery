@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:jammybread/modules/home/view/home.screen.dart';
 
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatefulWidget {
+  const NavBar({super.key});
+
   @override
   State<NavBar> createState() => _NavBarState();
 }
@@ -12,8 +15,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-   Text('Home Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    HomeScreen(),
     Text('Discover Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     Text('Orders Page',
@@ -36,23 +38,20 @@ class _NavBarState extends State<NavBar> {
         BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon:  SvgPicture.asset(
+              icon: SvgPicture.asset(
                 Strings.homeIcon,
-              
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 Strings.discoverIcon,
-              
               ),
               label: 'Discover',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 Strings.receiptIcon,
-              
               ),
               label: 'Orders',
             ),

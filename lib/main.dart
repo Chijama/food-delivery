@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// import 'package:jammybread/modules/home/view/nav.bar.dart';
+import 'package:jammybread/modules/home/view/nav.bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: NavBar(),
+      home: const NavBar(),
     );
   }
 }
