@@ -39,6 +39,8 @@ class CategoryItem extends StatelessWidget {
       radius: 51,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+mainAxisAlignment: MainAxisAlignment.center,
+crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 10,

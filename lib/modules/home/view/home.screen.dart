@@ -172,11 +172,11 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 181,
             child: ListView.builder(
-              padding: const EdgeInsets.only(right: 10),
               scrollDirection: Axis.horizontal,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Container(
+                  margin:  const EdgeInsets.only(right: 18),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8))),
                     height: 180,
@@ -201,23 +201,25 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 165,
             child: ListView.builder(
-              padding: const EdgeInsets.only(right: 10),
+              
               scrollDirection: Axis.horizontal,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
                     Container(
-                        decoration: const BoxDecoration(
+                      margin:  const EdgeInsets.only(right: 18),
+                        decoration: const BoxDecoration(color: Colors. black,
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         height: 113,
                         width: 202,
-                        child: Image.asset(Strings.kfcImage)),
+                        child: Image.asset(Strings.kfcImage, fit: BoxFit.cover,)),
                     const SizedBox(
                       height: 8,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SvgPicture.asset(
                           Strings.kfcLogo,

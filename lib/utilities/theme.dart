@@ -40,7 +40,7 @@ class Themes {
 class TextStyles {
   TextStyle defaultText(final double? fontSize, final FontWeight? weight,
           final Color color) =>
-      GoogleFonts.signika(
+      TextStyle( fontFamily : 'Everett',
         color: color,
         fontWeight: weight ?? FontWeight.w500,
         fontSize: fontSize ?? 19,
@@ -49,7 +49,7 @@ class TextStyles {
   //Black Text
 
   TextStyle blackWeight400size36() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w400,
       fontSize: 36,
@@ -57,7 +57,7 @@ class TextStyles {
   }
 
   TextStyle blackWeight400size12() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w400,
       fontSize: 12,
@@ -65,7 +65,7 @@ class TextStyles {
   }
 
   TextStyle blackWeight500size16() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w500,
       fontSize: 16,
@@ -73,7 +73,7 @@ class TextStyles {
   }
 
   TextStyle blackWeight500size17() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w500,
       fontSize: 17,
@@ -81,7 +81,7 @@ class TextStyles {
   }
 
   TextStyle blackWeight500size21() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w500,
       fontSize: 21,
@@ -90,7 +90,7 @@ class TextStyles {
 
   //Blue Text
   TextStyle blueWeight500size18() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().blue100,
       fontWeight: FontWeight.w500,
       fontSize: 18,
@@ -99,7 +99,7 @@ class TextStyles {
 
   // Orange Text
   TextStyle peachWeight400size17() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().peach100,
       fontWeight: FontWeight.w400,
       fontSize: 17,
@@ -108,7 +108,7 @@ class TextStyles {
 
   //Grey Text
   TextStyle greyWeight400size13() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: const Color(0xff292d3299),
       fontWeight: FontWeight.w400,
       fontSize: 13,
@@ -116,7 +116,7 @@ class TextStyles {
   }
 
   TextStyle greyWeight400size17() {
-    return GoogleFonts.signika(
+    return TextStyle( fontFamily : 'Everett',
       color: Themes().dark60,
       fontWeight: FontWeight.w400,
       fontSize: 17,
