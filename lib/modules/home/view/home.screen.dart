@@ -16,8 +16,8 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 43,
-                  width: 165,
+                  height: 40,
+                 
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
@@ -40,8 +40,8 @@ class HomeScreen extends StatelessWidget {
                   width: 12,
                 ),
                 Container(
-                  height: 43,
-                  width: 165,
+                  height: 40,
+                 
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Text(
               '${getGreeting()} Joel',
-              style: TextStyles().blackWeight400size36(),
+              style: TextStyles().blackWeight400size33(),
             ),
             const SizedBox(
               height: 12,

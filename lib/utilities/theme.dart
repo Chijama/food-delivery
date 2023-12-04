@@ -48,11 +48,11 @@ class TextStyles {
 
   //Black Text
 
-  TextStyle blackWeight400size36() {
+  TextStyle blackWeight400size33() {
     return TextStyle( fontFamily : 'Everett',
       color: Themes().dark100,
       fontWeight: FontWeight.w400,
-      fontSize: 36,
+      fontSize: 33,
     );
   }
 

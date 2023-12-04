@@ -68,7 +68,7 @@ flutter:
         - asset: assets/fonts/Aeonik-Regular.otf
     - family: Everett
       fonts:
-        - asset: assets/fonts/Everett-Medium.otf
+        - asset: assets/fonts/Everett Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
