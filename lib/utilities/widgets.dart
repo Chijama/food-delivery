@@ -15,10 +15,12 @@ class Search extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
             border: InputBorder.none,
-            prefixIcon: SvgPicture.asset(
-              Strings.searchIcon,
-              height: 24,
-              width: 24,
+            prefixIcon: IconButton(
+              iconSize: 24,
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                Strings.searchIcon,
+              ),
             ),
             hintText: hintText,
             hintStyle: TextStyles().greyWeight400size17()),

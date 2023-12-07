@@ -7,6 +7,12 @@ class Strings {
   static const String searchIcon = 'assets/icons/search.svg';
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';
+  static const String searchBlackIcon = 'assets/icons/search-black.svg';
+  static const String shoppingBagIcon = 'assets/icons/shopping-bag.svg';
+  static const String moreSquareIcon = 'assets/icons/more-square.svg';
+
+
+
 
   static const String groceryImage = 'assets/images/grocery.png';
   static const String burgerImage = 'assets/images/burger.png';
