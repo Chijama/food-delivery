@@ -5,6 +5,7 @@ import 'package:jammybread/utilities/theme.dart';
 import 'package:jammybread/utilities/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = '/home-screen';
   const HomeScreen({super.key});
 
   // Top Section
@@ -18,8 +19,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   height: 43,
                   width: 165,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                     color: Themes().peach60.withOpacity(0.5),
@@ -42,8 +42,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   height: 43,
                   width: 165,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                     color: Themes().peach60.withOpacity(0.5),
@@ -176,9 +175,9 @@ class HomeScreen extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Container(
-                  margin:  const EdgeInsets.only(right: 18),
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    margin: const EdgeInsets.only(right: 18),
+                    decoration:
+                        const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
                     height: 180,
                     width: 315,
                     child: Image.asset(Strings.offersImage));
@@ -201,19 +200,22 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 165,
             child: ListView.builder(
-              
               scrollDirection: Axis.horizontal,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
                     Container(
-                      margin:  const EdgeInsets.only(right: 18),
-                        decoration: const BoxDecoration(color: Colors. black,
+                        margin: const EdgeInsets.only(right: 18),
+                        decoration: const BoxDecoration(
+                            color: Colors.black,
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         height: 113,
                         width: 202,
-                        child: Image.asset(Strings.kfcImage, fit: BoxFit.cover,)),
+                        child: Image.asset(
+                          Strings.kfcImage,
+                          fit: BoxFit.cover,
+                        )),
                     const SizedBox(
                       height: 8,
                     ),

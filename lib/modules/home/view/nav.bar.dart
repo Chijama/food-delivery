@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
-
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatefulWidget {
+  static const String routeName = '/nav-bar';
   const NavBar({super.key});
 
   @override
@@ -16,12 +16,9 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text('Discover Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Orders Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Discover Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Orders Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
   void _onItemTapped(int index) {
@@ -63,8 +60,7 @@ class _NavBarState extends State<NavBar> {
           backgroundColor: Themes().light80,
           selectedLabelStyle: TextStyles().blackWeight400size12(),
           unselectedLabelStyle: TextStyles().blackWeight400size12(),
-          selectedIconTheme:
-              IconThemeData(opacity: 1, fill: 0.5, color: Themes().dark100),
+          selectedIconTheme: IconThemeData(opacity: 1, fill: 0.5, color: Themes().dark100),
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           iconSize: 24,
