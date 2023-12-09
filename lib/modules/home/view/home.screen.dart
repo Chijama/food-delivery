@@ -6,6 +6,7 @@ import 'package:jammybread/utilities/widgets/category.item.dart';
 import 'package:jammybread/utilities/widgets/search.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = '/home-screen';
   const HomeScreen({super.key});
 
   // Top Section

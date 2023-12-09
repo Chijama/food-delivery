@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/restaurant/view/restaurant.menu.screen.dart';
-
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatefulWidget {
+  static const String routeName = '/nav-bar';
   const NavBar({super.key});
 
   @override
@@ -18,10 +18,8 @@ class _NavBarState extends State<NavBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const RestaurantMenu(),
-    const Text('Orders Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    const Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const Text('Orders Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
   void _onItemTapped(int index) {

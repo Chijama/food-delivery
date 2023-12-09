@@ -5,6 +5,8 @@ import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
 
 class RestaurantMenu extends StatefulWidget {
+  static const String routeName = '/restaurant-menu';
+
   const RestaurantMenu({super.key});
 
   @override
