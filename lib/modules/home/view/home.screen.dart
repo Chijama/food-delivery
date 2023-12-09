@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
-import 'package:jammybread/utilities/widgets.dart';
+import 'package:jammybread/utilities/widgets/category.item.dart';
+import 'package:jammybread/utilities/widgets/search.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,22 +17,21 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 40,
-                 
+                  height: 38,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Themes().peach60.withOpacity(0.5),
+                    color: AppColors().peach60.withOpacity(0.5),
                   ),
                   child: Row(
                     children: [
                       Icon(
                         Icons.location_on_outlined,
-                        color: Themes().peach100,
+                        color: AppColors().peach100,
                       ),
                       Text('34,Lekki Way',
-                          style: TextStyles().peachWeight400size17(),
+                          style: TextStyles().peachWeight400size15(),
                           overflow: TextOverflow.ellipsis),
                     ],
                   ),
@@ -40,23 +40,22 @@ class HomeScreen extends StatelessWidget {
                   width: 12,
                 ),
                 Container(
-                  height: 40,
-                 
+                  height: 38,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: Themes().peach60.withOpacity(0.5),
+                    color: AppColors().peach60.withOpacity(0.5),
                   ),
                   child: Row(
                     children: [
                       Icon(
                         Icons.access_time_outlined,
-                        color: Themes().peach100,
+                        color: AppColors().peach100,
                         size: 20,
                       ),
-                      Text('Order Now',
-                          style: TextStyles().peachWeight400size17(),
+                      Text(' Order Now',
+                          style: TextStyles().peachWeight400size15(),
                           overflow: TextOverflow.ellipsis),
                     ],
                   ),
@@ -134,7 +133,8 @@ class HomeScreen extends StatelessWidget {
                       width: 102,
                       decoration: BoxDecoration(
                           color: Colors.transparent,
-                          border: Border.all(width: 2, color: Themes().blue100),
+                          border:
+                              Border.all(width: 2, color: AppColors().blue100),
                           borderRadius: BorderRadius.circular(100)),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -142,7 +142,7 @@ class HomeScreen extends StatelessWidget {
                           Icon(
                             Icons.arrow_forward_rounded,
                             size: 24,
-                            color: Themes().blue100,
+                            color: AppColors().blue100,
                           ),
                           Text(
                             'See All',
@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Container(
-                  margin:  const EdgeInsets.only(right: 18),
+                    margin: const EdgeInsets.only(right: 18),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(8))),
                     height: 180,
@@ -201,19 +201,22 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 165,
             child: ListView.builder(
-              
               scrollDirection: Axis.horizontal,
               itemCount: 6,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
                     Container(
-                      margin:  const EdgeInsets.only(right: 18),
-                        decoration: const BoxDecoration(color: Colors. black,
+                        margin: const EdgeInsets.only(right: 18),
+                        decoration: const BoxDecoration(
+                            color: Colors.black,
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         height: 113,
                         width: 202,
-                        child: Image.asset(Strings.kfcImage, fit: BoxFit.cover,)),
+                        child: Image.asset(
+                          Strings.kfcImage,
+                          fit: BoxFit.cover,
+                        )),
                     const SizedBox(
                       height: 8,
                     ),
@@ -268,7 +271,7 @@ class HomeScreen extends StatelessWidget {
                 height: 21,
               ),
               Divider(
-                color: Themes().light60,
+                color: AppColors().light60,
                 thickness: 1,
               ),
               const SizedBox(
@@ -279,7 +282,7 @@ class HomeScreen extends StatelessWidget {
                 height: 21,
               ),
               Divider(
-                color: Themes().light60,
+                color: AppColors().light60,
                 thickness: 1,
               ),
               const SizedBox(

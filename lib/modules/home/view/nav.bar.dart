@@ -15,12 +15,12 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
-  static  List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    RestaurantMenu(),
-    Text('Orders Page',
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomeScreen(),
+    const RestaurantMenu(),
+    const Text('Orders Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page',
+    const Text('Profile Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
 
@@ -56,22 +56,22 @@ class _NavBarState extends State<NavBar> {
               label: 'Orders',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Themes().dark100),
+              icon: Icon(Icons.person, color: AppColors().dark100),
               label: 'Profile',
             ),
           ],
-          backgroundColor: Themes().light80,
+          backgroundColor: AppColors().light80,
           selectedLabelStyle: TextStyles().blackWeight400size12(),
           unselectedLabelStyle: TextStyles().blackWeight400size12(),
           selectedIconTheme:
-              IconThemeData(opacity: 1, fill: 0.5, color: Themes().dark100),
+              IconThemeData(opacity: 1, fill: 0.5, color: AppColors().dark100),
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           iconSize: 24,
           onTap: _onItemTapped,
           elevation: 0,
-          unselectedItemColor: Themes().dark100,
-          selectedItemColor: Themes().dark100,
+          unselectedItemColor: AppColors().dark100,
+          selectedItemColor: AppColors().dark100,
         ),
         buildDotIndicator()
       ]),
@@ -88,7 +88,7 @@ class _NavBarState extends State<NavBar> {
         height: 5.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Themes().dark100,
+          color: AppColors().dark100,
         ),
       ),
     );

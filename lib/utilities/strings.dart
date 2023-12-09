@@ -5,12 +5,14 @@ class Strings {
   static const String homeIcon = 'assets/icons/home.svg';
   static const String receiptIcon = 'assets/icons/receipt.svg';
   static const String searchIcon = 'assets/icons/search.svg';
-  static const String kfcLogo = 'assets/icons/kfc_logo.svg';
-  static const String harveysLogo = 'assets/icons/harveys_logo.svg';
   static const String searchBlackIcon = 'assets/icons/search-black.svg';
   static const String shoppingBagIcon = 'assets/icons/shopping-bag.svg';
   static const String moreSquareIcon = 'assets/icons/more-square.svg';
 
+
+  static const String kfcLogo = 'assets/icons/kfc_logo.svg';
+  static const String harveysLogo = 'assets/icons/harveys_logo.svg';
+  static const String mcDonaldLogo = 'assets/icons/mcDonaldLogo.svg';
 
 
 
@@ -22,4 +24,6 @@ class Strings {
   static const String offersImage = 'assets/images/offers.png';
   static const String kfcImage = 'assets/images/kfc.png';
   static const String harveysImage = 'assets/images/harveys.png';
+  static const String classicCheeseburgerImage = 'assets/images/classic_chesse_burger.png';
+
 }
