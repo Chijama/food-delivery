@@ -118,6 +118,14 @@ class TextStyles {
       fontSize: 17,
     );
   }
+    TextStyle blackWeight500size18() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().dark100,
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+    );
+  }
 
   TextStyle blackWeight500size21() {
     return TextStyle(
@@ -125,6 +133,15 @@ class TextStyles {
       color: AppColors().dark100,
       fontWeight: FontWeight.w500,
       fontSize: 21,
+    );
+  }
+
+  TextStyle blackWeight500size22() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().dark100,
+      fontWeight: FontWeight.w500,
+      fontSize: 22,
     );
   }
 
@@ -168,9 +185,9 @@ class TextStyles {
 
   //Grey Text
   TextStyle greyWeight400size13() {
-    return const TextStyle(
+    return TextStyle(
       fontFamily: 'Everett',
-      color: Color(0xff292d3299),
+      color: AppColors().dark60,
       fontWeight: FontWeight.w400,
       fontSize: 13,
     );
