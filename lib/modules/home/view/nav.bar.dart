@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jammybread/modules/discover/view/discover.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/restaurant/view/restaurant.menu.screen.dart';
 import 'package:jammybread/utilities/strings.dart';
@@ -17,9 +18,10 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
-    const RestaurantMenu(),
+    const Discover(),
     const Text('Orders Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    const Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+        const RestaurantMenu(),
+
   ];
 
   void _onItemTapped(int index) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/widgets/app.bar.dart';
 
 class RestaurantMenu extends StatefulWidget {
   static const String routeName = '/restaurant-menu';
@@ -116,13 +117,11 @@ class _RestaurantMenuState extends State<RestaurantMenu>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: SvgPicture.asset(Strings.moreSquareIcon),
-            iconSize: 36,
-            onPressed: () {
-              showModalBottomSheet(
+      appBar: CustomAppBar(
+        searchOnPressed: (){},
+        shoppingOnPressed: (){},
+        moreOnPressed: () {
+        showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
                 shape: const RoundedRectangleBorder(
@@ -134,35 +133,7 @@ class _RestaurantMenuState extends State<RestaurantMenu>
                   return moreWidget();
                 },
               );
-            },
-          ),
-          IconButton(
-            icon: SvgPicture.asset(Strings.searchBlackIcon),
-            iconSize: 36,
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: SvgPicture.asset(Strings.shoppingBagIcon),
-            iconSize: 36,
-            onPressed: () {},
-          ),
-        ],
-        leading: Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back_rounded),
-              iconSize: 24,
-              color: AppColors().dark100,
-              onPressed: () {},
-            ),
-            // SizedBox(width: 5,),
-            Text(
-              'Back',
-              style: TextStyles().blackWeight500size14(),
-            ),
-          ],
-        ),
-        leadingWidth: 100,
+      },
       ),
       body: SafeArea(
         child: Column(

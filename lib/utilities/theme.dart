@@ -33,6 +33,10 @@ class AppColors {
   Color light100 = const Color(0xffFFFFFF);
   Color light80 = const Color(0xffEFF2F5);
   Color light60 = const Color(0xffD5DEE7);
+
+  //green
+  Color green100 = const Color(0xff28B996);
+
 }
 
 class TextStyles {
@@ -47,6 +51,14 @@ class TextStyles {
 
   //Black Text
 
+ TextStyle blackWeight400size34() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().dark100,
+      fontWeight: FontWeight.w400,
+      fontSize: 34,
+    );
+  }
   TextStyle blackWeight400size33() {
     return TextStyle(
       fontFamily: 'Everett',
@@ -154,6 +166,16 @@ class TextStyles {
     );
   }
 
+  //dark grey
+    TextStyle darkWeight500size12() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().dark90,
+      fontWeight: FontWeight.w500,
+      fontSize: 12,
+    );
+  }
+
   //Blue Text
   TextStyle blueWeight500size18() {
     return TextStyle(
@@ -201,6 +223,14 @@ class TextStyles {
       fontSize: 17,
     );
   }
+    TextStyle greyWeight500size12() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().dark60,
+      fontWeight: FontWeight.w500,
+      fontSize: 12,
+    );
+  }
 
 // White Text
   TextStyle whiteWeight500size14() {
@@ -214,4 +244,14 @@ class TextStyles {
 //Pink Text
 
 // Blue
+
+// Green Text
+ TextStyle greenWeight500size14() {
+    return TextStyle(
+      fontFamily: 'Everett',
+      color: AppColors().green100,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+    );
+  }
 }
