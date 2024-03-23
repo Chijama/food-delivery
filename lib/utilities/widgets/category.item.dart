@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jammybread/utilities/theme.dart';
-
+import 'package:jammybread/utilities/colors.dart';
 
 class CategoryItem extends StatelessWidget {
   final String image;
@@ -11,7 +11,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: AppColors().peach100.withOpacity(0.12),
+      backgroundColor: peach100.withOpacity(0.12),
       radius: 51,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -27,7 +27,7 @@ class CategoryItem extends StatelessWidget {
           ),
           Text(
             label,
-            style: TextStyles().blackWeight500size16(),
+            style: blackWeight500size16(),
           )
         ],
       ),

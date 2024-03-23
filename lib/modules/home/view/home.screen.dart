@@ -4,6 +4,7 @@ import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
 import 'package:jammybread/utilities/widgets/category.item.dart';
 import 'package:jammybread/utilities/widgets/search.dart';
+import 'package:jammybread/utilities/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home-screen';
@@ -23,16 +24,16 @@ class HomeScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: AppColors().peach60.withOpacity(0.5),
+                    color: peach60.withOpacity(0.5),
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on_outlined,
-                        color: AppColors().peach100,
+                        color: peach100,
                       ),
                       Text('34,Lekki Way',
-                          style: TextStyles().peachWeight400size15(),
+                          style: peachWeight400size15(),
                           overflow: TextOverflow.ellipsis),
                     ],
                   ),
@@ -46,17 +47,17 @@ class HomeScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    color: AppColors().peach60.withOpacity(0.5),
+                    color: peach60.withOpacity(0.5),
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.access_time_outlined,
-                        color: AppColors().peach100,
+                        color: peach100,
                         size: 20,
                       ),
                       Text(' Order Now',
-                          style: TextStyles().peachWeight400size15(),
+                          style: peachWeight400size15(),
                           overflow: TextOverflow.ellipsis),
                     ],
                   ),
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Text(
               '${getGreeting()} Joel',
-              style: TextStyles().blackWeight400size33(),
+              style: blackWeight400size33(),
             ),
             const SizedBox(
               height: 12,
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text(
               'Categories',
-              style: TextStyles().blackWeight500size21(),
+              style: blackWeight500size21(),
             ),
             const SizedBox(
               height: 14,
@@ -134,20 +135,19 @@ class HomeScreen extends StatelessWidget {
                       width: 102,
                       decoration: BoxDecoration(
                           color: Colors.transparent,
-                          border:
-                              Border.all(width: 2, color: AppColors().blue100),
+                          border: Border.all(width: 2, color: blue100),
                           borderRadius: BorderRadius.circular(100)),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward_rounded,
                             size: 24,
-                            color: AppColors().blue100,
+                            color: blue100,
                           ),
                           Text(
                             'See All',
-                            style: TextStyles().blueWeight500size18(),
+                            style: blueWeight500size18(),
                           ),
                         ],
                       ),
@@ -165,7 +165,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             'Offers Near You',
-            style: TextStyles().blackWeight500size21(),
+            style: blackWeight500size21(),
           ),
           const SizedBox(
             height: 14,
@@ -194,7 +194,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             'New & Trending',
-            style: TextStyles().blackWeight500size21(),
+            style: blackWeight500size21(),
           ),
           const SizedBox(
             height: 14,
@@ -237,11 +237,11 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Text(
                               'KFC',
-                              style: TextStyles().blackWeight500size17(),
+                              style: blackWeight500size17(),
                             ),
                             Text(
                               '2.1 mi',
-                              style: TextStyles().greyWeight400size13(),
+                              style: greyWeight400size13(),
                             )
                           ],
                         )
@@ -271,8 +271,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 21,
               ),
-              Divider(
-                color: AppColors().light60,
+              const Divider(
+                color: light60,
                 thickness: 1,
               ),
               const SizedBox(
@@ -282,8 +282,8 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 21,
               ),
-              Divider(
-                color: AppColors().light60,
+              const Divider(
+                color: light60,
                 thickness: 1,
               ),
               const SizedBox(

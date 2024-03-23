@@ -11,7 +11,8 @@ class Strings {
   static const String routeIcon = 'assets/icons/route.svg';
   static const String clockIcon = 'assets/icons/clock.svg';
   static const String exportIcon = 'assets/icons/export.svg';
-  static const String routeSqureIcon = 'assets/icons/route-square.svg';
+  static const String routeSquareIcon = 'assets/icons/route-square.svg';
+  static const String filterIcon = 'assets/icons/filter.svg';
 
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';
@@ -27,11 +28,12 @@ class Strings {
   static const String harveysImage = 'assets/images/harveys.png';
   static const String classicCheeseburgerImage =
       'assets/images/classic_chesse_burger.png';
-  static const String discoverMapImage = 'assets/images/discover_map2.png';
+  static const String discoverMapImage = 'assets/images/discover_map.png';
   static const String mapImage = 'assets/images/map.png';
 
   static const String friesImage = 'assets/images/fries.png';
-  static const String mcdonaldBurger1Image = 'assets/images/mcdonaldBurger1.png';
-  static const String mcdonaldBurger2Image = 'assets/images/mcdonaldBurger2.png';
-
+  static const String mcdonaldBurger1Image =
+      'assets/images/mcdonaldBurger1.png';
+  static const String mcdonaldBurger2Image =
+      'assets/images/mcdonaldBurger2.png';
 }

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
 import 'package:jammybread/utilities/widgets/app.bar.dart';
+import 'package:jammybread/utilities/colors.dart';
 
 class RestaurantMenu extends StatefulWidget {
   static const String routeName = '/restaurant-menu';
@@ -38,31 +39,31 @@ class _RestaurantMenuState extends State<RestaurantMenu>
                 children: [
                   Text(
                     "McDonald's",
-                    style: TextStyles().blackWeight400size24(),
+                    style: blackWeight400size24(),
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on_outlined,
-                        color: AppColors().dark100,
+                        color: dark100,
                         size: 13,
                       ),
                       const SizedBox(
                         width: 4,
                       ),
                       Text('Bramlea & Sandalwood',
-                          style: TextStyles().blackWeight400size14())
+                          style: blackWeight400size14())
                     ],
                   )
                 ],
               )
             ]),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 25,
-              backgroundColor: AppColors().light80,
+              backgroundColor: light80,
               child: Icon(
                 Icons.favorite_rounded,
-                color: AppColors().dark60,
+                color: dark60,
                 size: 22,
               ),
             )
@@ -79,10 +80,10 @@ class _RestaurantMenuState extends State<RestaurantMenu>
           controller: _tabController,
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorWeight: 3,
-          indicatorColor: AppColors().dark100,
-          labelStyle: TextStyles().greyWeight400size17(),
-          labelColor: AppColors().dark100,
-          unselectedLabelColor: AppColors().dark60,
+          indicatorColor: dark100,
+          labelStyle: greyWeight400size17(),
+          labelColor: dark100,
+          unselectedLabelColor: dark60,
           tabs: const [
             Tab(text: 'Breakfast'),
             Tab(text: 'Lunch'),
@@ -118,22 +119,21 @@ class _RestaurantMenuState extends State<RestaurantMenu>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        searchOnPressed: (){},
-        shoppingOnPressed: (){},
+        searchOnPressed: () {},
+        shoppingOnPressed: () {},
         moreOnPressed: () {
-        showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)),
-                ),
-                builder: (context) {
-                  return moreWidget();
-                },
-              );
-      },
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            ),
+            builder: (context) {
+              return moreWidget();
+            },
+          );
+        },
       ),
       body: SafeArea(
         child: Column(
@@ -156,9 +156,9 @@ class _RestaurantMenuState extends State<RestaurantMenu>
             Container(
               width: 55,
               height: 6,
-              decoration: BoxDecoration(
-                  color: AppColors().light60,
-                  borderRadius: const BorderRadius.all(Radius.circular(40))),
+              decoration: const BoxDecoration(
+                  color: light60,
+                  borderRadius: BorderRadius.all(Radius.circular(40))),
             ),
           ],
         ),
@@ -170,22 +170,22 @@ class _RestaurantMenuState extends State<RestaurantMenu>
             children: [
               Text(
                 'More Info',
-                style: TextStyles().blackWeight500size22(),
+                style: blackWeight500size22(),
               ),
               Container(
                 height: 193,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                    color: AppColors().blue140,
-                    borderRadius: const BorderRadius.all(Radius.circular(14))),
+                decoration: const BoxDecoration(
+                    color: blue140,
+                    borderRadius: BorderRadius.all(Radius.circular(14))),
               ),
               const SizedBox(height: 16),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.location_on_rounded,
                     size: 28,
-                    color: AppColors().dark100,
+                    color: dark100,
                   ),
                   const SizedBox(
                     width: 9,
@@ -193,7 +193,7 @@ class _RestaurantMenuState extends State<RestaurantMenu>
                   Expanded(
                       child: Text(
                     '10565 Bramlea Road, Brampton, ON L6R 3P4 the 24th, hampton,LA.',
-                    style: TextStyles().blackWeight400size17(),
+                    style: blackWeight400size17(),
                   ))
                 ],
               ),
@@ -201,9 +201,7 @@ class _RestaurantMenuState extends State<RestaurantMenu>
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: AppColors().dark100,
-                        width: 1.5,
-                        style: BorderStyle.solid),
+                        color: dark100, width: 1.5, style: BorderStyle.solid),
                     borderRadius: const BorderRadius.all(Radius.circular(14))),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 19, vertical: 18),
@@ -219,7 +217,7 @@ class _RestaurantMenuState extends State<RestaurantMenu>
                     ),
                     Text(
                       'Get Directions',
-                      style: TextStyles().blackWeight500size18(),
+                      style: blackWeight500size18(),
                     )
                   ],
                 ),
@@ -227,9 +225,9 @@ class _RestaurantMenuState extends State<RestaurantMenu>
             ],
           ),
         ),
-        Divider(
+        const Divider(
           thickness: 1,
-          color: AppColors().light60,
+          color: light60,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
@@ -246,24 +244,24 @@ class _RestaurantMenuState extends State<RestaurantMenu>
               Expanded(
                   child: Text(
                 'Open until 12:59 AM',
-                style: TextStyles().blackWeight400size17(),
+                style: blackWeight400size17(),
               ))
             ],
           ),
         ),
-        Divider(
+        const Divider(
           thickness: 1,
-          color: AppColors().light60,
+          color: light60,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.star_rounded,
                 size: 27,
-                color: AppColors().dark100,
+                color: dark100,
               ),
               const SizedBox(
                 width: 5,
@@ -273,11 +271,11 @@ class _RestaurantMenuState extends State<RestaurantMenu>
                 children: [
                   Text(
                     'Rated 4.5',
-                    style: TextStyles().blackWeight400size17(),
+                    style: blackWeight400size17(),
                   ),
                   Text(
                     '(1,491 Ratings)',
-                    style: TextStyles().greyWeight400size13(),
+                    style: greyWeight400size13(),
                   ),
                 ],
               )
@@ -340,9 +338,9 @@ class BreakfastView extends StatelessWidget {
             child: ListView.separated(
               itemCount: 20,
               separatorBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 21),
-                  child: Divider(thickness: 1, color: AppColors().light80),
+                return const Padding(
+                  padding: EdgeInsets.only(bottom: 21),
+                  child: Divider(thickness: 1, color: light80),
                 );
               },
               itemBuilder: (context, index) {
@@ -362,21 +360,20 @@ class BreakfastView extends StatelessWidget {
                             children: [
                               Text(
                                 'Classic Cheese Burger (400 Cals)',
-                                style: TextStyles().blackWeight400size17(),
+                                style: blackWeight400size17(),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text('\$5.84 ',
-                                      style: TextStyles()
-                                          .blackWeight400size16()
+                                      style:blackWeight400size16()
                                           .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough,
                                           )),
                                   Text(
                                     '\$4.59',
-                                    style: TextStyles().blueWeight600size16(),
+                                    style: blueWeight600size16(),
                                   ),
                                 ],
                               )
@@ -428,12 +425,10 @@ class _FiltersState extends State<Filters> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(25)),
-            color: state ? AppColors().dark90 : AppColors().light80),
+            color: state ? dark90 : light80),
         child: Text(
           widget.text,
-          style: state
-              ? TextStyles().whiteWeight500size14()
-              : TextStyles().blackWeight500size14(),
+          style: state ? whiteWeight500size14() : blackWeight500size14(),
         ),
       ),
     );

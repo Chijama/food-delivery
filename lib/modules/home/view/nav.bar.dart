@@ -5,6 +5,7 @@ import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/restaurant/view/restaurant.menu.screen.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/colors.dart';
 
 class NavBar extends StatefulWidget {
   static const String routeName = '/nav-bar';
@@ -19,9 +20,9 @@ class _NavBarState extends State<NavBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const Discover(),
-    const Text('Orders Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-        const RestaurantMenu(),
-
+    const Text('Orders Page',
+        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const RestaurantMenu(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,23 +56,23 @@ class _NavBarState extends State<NavBar> {
               ),
               label: 'Orders',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: AppColors().dark100),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.person, color: dark100),
               label: 'Profile',
             ),
           ],
-          backgroundColor: AppColors().light80,
-          selectedLabelStyle: TextStyles().blackWeight400size12(),
-          unselectedLabelStyle: TextStyles().blackWeight400size12(),
+          backgroundColor: light80,
+          selectedLabelStyle: blackWeight400size12(),
+          unselectedLabelStyle: blackWeight400size12(),
           selectedIconTheme:
-              IconThemeData(opacity: 1, fill: 0.5, color: AppColors().dark100),
+              const IconThemeData(opacity: 1, fill: 0.5, color: dark100),
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           iconSize: 24,
           onTap: _onItemTapped,
           elevation: 0,
-          unselectedItemColor: AppColors().dark100,
-          selectedItemColor: AppColors().dark100,
+          unselectedItemColor: dark100,
+          selectedItemColor: dark100,
         ),
         buildDotIndicator()
       ]),
@@ -86,9 +87,9 @@ class _NavBarState extends State<NavBar> {
       child: Container(
         width: 5.0,
         height: 5.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColors().dark100,
+          color: dark100,
         ),
       ),
     );

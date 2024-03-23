@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jammybread/modules/discover/view/discover.search.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
 
@@ -11,5 +12,8 @@ class AppRouter {
     // Authentication
 
     // Onboarding
+
+    // Discover
+    DiscoverSearch.routeName: (context) => const DiscoverSearch(),
   };
 }

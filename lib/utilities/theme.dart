@@ -1,257 +1,254 @@
 import 'package:flutter/material.dart';
+import 'package:jammybread/utilities/colors.dart';
 
-class AppColors {
-  //pink
-  Color pink60 = const Color(0xffFDD3E1);
-  Color pink80 = const Color(0xffF69DBB);
-  Color pink100 = const Color(0xffF4739E);
-  Color pink120 = const Color(0xffD55881);
-  Color pink140 = const Color(0xff953756);
+TextStyle defaultText(
+        final double? fontSize, final FontWeight? weight, final Color color) =>
+    TextStyle(
+      fontFamily: 'Everett',
+      color: color,
+      fontWeight: weight ?? FontWeight.w500,
+      fontSize: fontSize ?? 19,
+    );
 
-  //blue
-  Color blue60 = const Color(0xffBBE8FB);
-  Color blue80 = const Color(0xff80D1F4);
-  Color blue100 = const Color(0xff45B8E9);
-  Color blue120 = const Color(0xff3294BD);
-  Color blue140 = const Color(0xff1A6C8E);
+//Black Text
 
-  //peach
-  Color peach60 = const Color(0xffFCE2CF);
-  Color peach80 = const Color(0xffF6BA8D);
-  Color peach100 = const Color(0xffEA985B);
-  Color peach120 = const Color(0xffD47F40);
-  Color peach140 = const Color(0xffA4602D);
-
-  //dark
-  Color dark60 = const Color(0xffB3BFCB);
-  Color dark80 = const Color(0xff6A798A);
-  Color dark90 = const Color(0xff46505D);
-  Color dark100 = const Color(0xff292D32);
-  Color dark120 = const Color(0xff151719);
-
-  //light
-  Color light100 = const Color(0xffFFFFFF);
-  Color light80 = const Color(0xffEFF2F5);
-  Color light60 = const Color(0xffD5DEE7);
-
-  //green
-  Color green100 = const Color(0xff28B996);
-
+TextStyle blackWeight400size34() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 34,
+  );
 }
 
-class TextStyles {
-  TextStyle defaultText(final double? fontSize, final FontWeight? weight,
-          final Color color) =>
-      TextStyle(
-        fontFamily: 'Everett',
-        color: color,
-        fontWeight: weight ?? FontWeight.w500,
-        fontSize: fontSize ?? 19,
-      );
+TextStyle blackWeight400size33() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 33,
+  );
+}
 
-  //Black Text
+TextStyle blackWeight400size24() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 24,
+  );
+}
 
- TextStyle blackWeight400size34() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 34,
-    );
-  }
-  TextStyle blackWeight400size33() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 33,
-    );
-  }
+TextStyle blackWeight400size14() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+  );
+}
 
-  TextStyle blackWeight400size24() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 24,
-    );
-  }
+TextStyle blackWeight400size12() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 12,
+  );
+}
 
-  TextStyle blackWeight400size14() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 14,
-    );
-  }
+TextStyle blackWeight400size17() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 17,
+  );
+}
 
-  TextStyle blackWeight400size12() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 12,
-    );
-  }
+TextStyle blackWeight500size16() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  );
+}
 
-  TextStyle blackWeight400size17() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 17,
-    );
-  }
+TextStyle blackWeight500size14() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+  );
+}
 
-  TextStyle blackWeight500size16() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 16,
-    );
-  }
+TextStyle blackWeight500size17() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 17,
+  );
+}
 
-  TextStyle blackWeight500size14() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 14,
-    );
-  }
+TextStyle blackWeight500size18() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+  );
+}
 
-  TextStyle blackWeight500size17() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 17,
-    );
-  }
-    TextStyle blackWeight500size18() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 18,
-    );
-  }
+TextStyle blackWeight500size21() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 21,
+  );
+}
 
-  TextStyle blackWeight500size21() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 21,
-    );
-  }
+TextStyle blackWeight500size22() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w500,
+    fontSize: 22,
+  );
+}
 
-  TextStyle blackWeight500size22() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w500,
-      fontSize: 22,
-    );
-  }
+TextStyle blackWeight400size16() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark100,
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
+  );
+}
 
-  TextStyle blackWeight400size16() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark100,
-      fontWeight: FontWeight.w400,
-      fontSize: 16,
-    );
-  }
+//dark grey
+TextStyle darkWeight500size12() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark90,
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+  );
+}
+TextStyle darkWeight400size14() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark90,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+  );
+}
 
-  //dark grey
-    TextStyle darkWeight500size12() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark90,
-      fontWeight: FontWeight.w500,
-      fontSize: 12,
-    );
-  }
+//Blue Text
+TextStyle blueWeight500size18() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: blue100,
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+  );
+}
 
-  //Blue Text
-  TextStyle blueWeight500size18() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().blue100,
-      fontWeight: FontWeight.w500,
-      fontSize: 18,
-    );
-  }
+TextStyle blueWeight600size16() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: blue100,
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+  );
+}
 
-  TextStyle blueWeight600size16() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().blue100,
-      fontWeight: FontWeight.w600,
-      fontSize: 16,
-    );
-  }
+// Orange Text
+TextStyle peachWeight400size15() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: peach100,
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+  );
+}
 
-  // Orange Text
-  TextStyle peachWeight400size15() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().peach100,
-      fontWeight: FontWeight.w400,
-      fontSize: 15,
-    );
-  }
+//Grey Text
+TextStyle greyWeight400size13() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark60,
+    fontWeight: FontWeight.w400,
+    fontSize: 13,
+  );
+}
 
-  //Grey Text
-  TextStyle greyWeight400size13() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark60,
-      fontWeight: FontWeight.w400,
-      fontSize: 13,
-    );
-  }
+TextStyle greyWeight400size17() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark60,
+    fontWeight: FontWeight.w400,
+    fontSize: 17,
+  );
+}
 
-  TextStyle greyWeight400size17() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark60,
-      fontWeight: FontWeight.w400,
-      fontSize: 17,
-    );
-  }
-    TextStyle greyWeight500size12() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().dark60,
-      fontWeight: FontWeight.w500,
-      fontSize: 12,
-    );
-  }
+TextStyle greyWeight400size15() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark60,
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+  );
+}
+
+TextStyle greyWeight500size12() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark60,
+    fontWeight: FontWeight.w500,
+    fontSize: 12,
+  );
+}
 
 // White Text
-  TextStyle whiteWeight500size14() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().light100,
-      fontWeight: FontWeight.w500,
-      fontSize: 14,
-    );
-  }
-//Pink Text
+TextStyle whiteWeight500size14() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: light100,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+  );
+}
 
+TextStyle whiteWeight400size17() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: light100,
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+  );
+}
+
+//Pink Text
+TextStyle pinkWeight500size16() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: pink100,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  );
+}
 // Blue
 
 // Green Text
- TextStyle greenWeight500size14() {
-    return TextStyle(
-      fontFamily: 'Everett',
-      color: AppColors().green100,
-      fontWeight: FontWeight.w500,
-      fontSize: 14,
-    );
-  }
+TextStyle greenWeight500size14() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: green100,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+  );
 }
