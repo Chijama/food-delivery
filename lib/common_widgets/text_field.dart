@@ -163,6 +163,7 @@ class EmailTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InputField(
+      controller: controller,
         labelText: labelText,
         keyboardType: TextInputType.emailAddress,
         validator: (value) {

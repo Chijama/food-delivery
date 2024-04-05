@@ -34,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
                 : onPressed,
         child: Container(
           width: width,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: isLoading

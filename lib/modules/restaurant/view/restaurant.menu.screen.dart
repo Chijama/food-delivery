@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/theme.dart';
-import 'package:jammybread/utilities/widgets/app.bar.dart';
+import 'package:jammybread/common_widgets/app.bar.dart';
 import 'package:jammybread/utilities/colors.dart';
 
 class RestaurantMenu extends StatefulWidget {

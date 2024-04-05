@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60698621398",
+    "project_id": "food-delivery-8e2af",
+    "storage_bucket": "food-delivery-8e2af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60698621398:android:f3b87ff6f69c905abf6077",
+        "android_client_info": {
+          "package_name": "com.djjambread.jammybread"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbWTkz6YEPLilshkYq-MwoGVwTlvvGFG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
