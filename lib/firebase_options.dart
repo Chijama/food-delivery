@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCezjeqfGQ_7ME3iOXw0w00lkCQF6cSae4',
-    appId: '1:60698621398:web:562db793561c1d38bf6077',
-    messagingSenderId: '60698621398',
-    projectId: 'food-delivery-8e2af',
-    authDomain: 'food-delivery-8e2af-ed500.firebaseapp.com',
-    storageBucket: 'food-delivery-8e2af.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAbWTkz6YEPLilshkYq-MwoGVwTlvvGFG8',
     appId: '1:60698621398:android:f3b87ff6f69c905abf6077',
@@ -67,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'food-delivery-8e2af',
     storageBucket: 'food-delivery-8e2af.appspot.com',
     iosBundleId: 'com.djjambread.jammybread',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA6Ib9cEDGXdYskKxfK9-5P0FY_Alo_jWY',
-    appId: '1:60698621398:ios:eec770acfeed6139bf6077',
-    messagingSenderId: '60698621398',
-    projectId: 'food-delivery-8e2af',
-    storageBucket: 'food-delivery-8e2af.appspot.com',
-    iosBundleId: 'com.djjambread.foodDelivery.RunnerTests',
   );
 }
