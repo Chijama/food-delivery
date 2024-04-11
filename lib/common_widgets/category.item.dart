@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/utilities/colors.dart';
 
 class CategoryItem extends StatelessWidget {

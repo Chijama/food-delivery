@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jammybread/firebase_options.dart';
-import 'package:jammybread/modules/authentication/view/login.screen.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
+import 'package:jammybread/services/auth_gate.dart';
+import 'package:jammybread/utilities/app_router.dart';
+import 'package:jammybread/utilities/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,15 +19,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // routes: AppRouter.routers,
-      // initialRoute: NavBar.routeName,
-      home: const WelcomeScreen(),
+    return GetMaterialApp(
+      routes: AppRouter.routers,
+      initialRoute: WelcomeScreen.routeName,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      themeMode: ThemeMode.light,
     );
   }
 }

@@ -17,7 +17,8 @@ class InputField extends StatefulWidget {
   final Function()? onTap;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
-  final void Function(String)? onChanged;
+  //final VoidCallback onChanged;
+
   const InputField({
     super.key,
     required this.labelText,
@@ -33,7 +34,6 @@ class InputField extends StatefulWidget {
     this.onTap,
     this.keyboardType,
     this.inputFormatters,
-    this.onChanged,
   });
 
   @override
@@ -50,70 +50,71 @@ class _InputFieldState extends State<InputField> {
       children: [
         Text(widget.labelText, style: blackWeight400size14()),
         const SizedBox(height: 8),
-
-        TextFormField(
-          textAlign: TextAlign.start,
-          textAlignVertical: TextAlignVertical.center,
-          controller: widget.controller,
-          autofocus: widget.autoFocus,
-          readOnly: widget.readOnly,
-          obscureText: passwordVisibility,
-          keyboardType: TextInputType.text,
-          inputFormatters: widget.inputFormatters,
-          onTap: widget.onTap,
-          onChanged: widget.onChanged,
-          style: blackWeight400size14(),
-          validator: widget.validator ??
-              (value) {
-                if (value!.isEmpty) {
-                  return 'Invalid input';
-                } else {
-                  return null;
-                }
-              },
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: light80,
-            prefix: widget.prefix,
-            suffix: widget.suffixIcon == true
-                ? InkWell(
-                    onTap: () => setState(
-                      () => passwordVisibility = !passwordVisibility,
-                    ),
-                    child: Container(
-                      transform: Matrix4.translationValues(0.0, 2.0, 0.0),
-                      child: Icon(
-                        passwordVisibility
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
-                        color: dark80,
-                        size: 18,
+        Container(
+          decoration: const BoxDecoration(
+              color: light80,
+              borderRadius: BorderRadius.all(Radius.circular(14))),
+          child: TextFormField(
+            textAlign: TextAlign.start,
+            textAlignVertical: TextAlignVertical.center,
+            controller: widget.controller,
+            autofocus: widget.autoFocus,
+            readOnly: widget.readOnly,
+            obscureText: passwordVisibility,
+            keyboardType: TextInputType.text,
+            inputFormatters: widget.inputFormatters,
+            onTap: widget.onTap,
+            style: blackWeight400size14(),
+            validator: widget.validator ??
+                (value) {
+                  if (value!.isEmpty) {
+                    return 'Invalid input';
+                  } else {
+                    return null;
+                  }
+                },
+            decoration: InputDecoration(
+              fillColor: light80,
+              prefix: widget.prefix,
+              suffix: widget.suffixIcon == true
+                  ? InkWell(
+                      onTap: () => setState(
+                        () => passwordVisibility = !passwordVisibility,
                       ),
-                    ),
-                  )
-                : null,
-            hintText: widget.hintText,
-            hintStyle: darkWeight500size12(),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 14.0),
-            border: InputBorder.none,
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: dark100, width: 1.2),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: Colors.transparent, width: 2.0),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: Colors.transparent, width: 2.0),
-              borderRadius: BorderRadius.circular(8),
+                      child: Container(
+                        transform: Matrix4.translationValues(0.0, 2.0, 0.0),
+                        child: Icon(
+                          passwordVisibility
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: dark80,
+                          size: 18,
+                        ),
+                      ),
+                    )
+                  : null,
+              hintText: widget.hintText,
+              hintStyle: darkWeight500size12(),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 14.0),
+              border: InputBorder.none,
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: dark100, width: 1.2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: Colors.transparent, width: 2.0),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide:
+                    const BorderSide(color: Colors.transparent, width: 2.0),
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
           ),
         ),
-
         // Text(
         //   widget.validationMessage ?? '',
         //   style: kValidationTextStyle,
@@ -156,16 +157,14 @@ class EmailTextField extends StatelessWidget {
   final String labelText;
   final String? hintText;
   final TextEditingController? controller;
-  final void Function(String)? onChanged;
   const EmailTextField(
-      {super.key, required this.labelText, this.hintText, this.controller, this.onChanged});
+      {super.key, required this.labelText, this.hintText, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return InputField(
-        controller: controller,
+      controller: controller,
         labelText: labelText,
-        onChanged: onChanged,
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {

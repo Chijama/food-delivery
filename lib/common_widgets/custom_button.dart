@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jammybread/utilities/colors.dart';
-import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/textstyles.dart';
 
 class PrimaryButton extends StatelessWidget {
   final double width;

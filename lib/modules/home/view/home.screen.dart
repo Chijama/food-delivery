@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/utilities/strings.dart';
-import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/common_widgets/category.item.dart';
 import 'package:jammybread/common_widgets/search.dart';
 import 'package:jammybread/utilities/colors.dart';

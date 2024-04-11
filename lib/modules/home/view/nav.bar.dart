@@ -4,7 +4,7 @@ import 'package:jammybread/modules/discover/view/discover.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/restaurant/view/restaurant.menu.screen.dart';
 import 'package:jammybread/utilities/strings.dart';
-import 'package:jammybread/utilities/theme.dart';
+import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/utilities/colors.dart';
 
 class NavBar extends StatefulWidget {

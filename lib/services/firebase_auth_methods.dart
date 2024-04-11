@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:jammybread/modules/authentication/view/signup_email_password_failure.dart';
+import 'package:jammybread/utilities/show_snack_bar.dart';
 
 class AuthService {
 // get instance of firebase auth
@@ -22,11 +24,10 @@ class AuthService {
     }
     //  catch any errors
     on FirebaseAuthException catch (e) {
-    
+      showSnackBar(context, e.toString());
       throw Exception(e.code);
     }
   }
-
 
   // email sign up
   Future<UserCredential> signUpWithEmailPassword(
@@ -38,8 +39,11 @@ class AuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return userCredential;
     }
+
     //  catch any errors
     on FirebaseAuthException catch (e) {
+      final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
+      showSnackBar(context, ex.message);
       throw Exception(e.code);
     }
   }

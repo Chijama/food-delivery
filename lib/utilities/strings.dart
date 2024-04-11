@@ -13,6 +13,8 @@ class Strings {
   static const String exportIcon = 'assets/icons/export.svg';
   static const String routeSquareIcon = 'assets/icons/route-square.svg';
   static const String filterIcon = 'assets/icons/filter.svg';
+  static const String arrowDown ='assets+icons+arrow-down.svg';
+
 
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';
@@ -36,4 +38,5 @@ class Strings {
       'assets/images/mcdonaldBurger1.png';
   static const String mcdonaldBurger2Image =
       'assets/images/mcdonaldBurger2.png';
+  static const String google = 'assets/icons/Google.png';
 }

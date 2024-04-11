@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:jammybread/modules/authentication/view/login.screen.dart';
 import 'package:jammybread/modules/authentication/view/signup.screen.dart';
 import 'package:jammybread/utilities/colors.dart';
-import 'package:jammybread/utilities/theme.dart';
-
+import 'package:jammybread/utilities/textstyles.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static const String routeName = '/welcome';
+
   const WelcomeScreen({super.key});
 
   @override
@@ -30,6 +31,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: light100,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
