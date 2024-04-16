@@ -1,7 +1,4 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jammybread/common_widgets/custom_button.dart';
 import 'package:jammybread/common_widgets/text_field.dart';
 import 'package:jammybread/services/firebase_auth_methods.dart';

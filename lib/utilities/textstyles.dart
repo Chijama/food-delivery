@@ -138,12 +138,22 @@ TextStyle darkWeight500size12() {
     fontSize: 12,
   );
 }
+
 TextStyle darkWeight400size14() {
   return const TextStyle(
     fontFamily: 'Everett',
     color: dark90,
     fontWeight: FontWeight.w400,
     fontSize: 14,
+  );
+}
+
+TextStyle darkWeight400size16() {
+  return const TextStyle(
+    fontFamily: 'Everett',
+    color: dark90,
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
   );
 }
 

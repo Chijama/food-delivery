@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jammybread/modules/authentication/view/signup_email_password_failure.dart';
+import 'package:get/get.dart';
+import 'package:jammybread/modules/authentication/signup_email_password_failure.dart';
 import 'package:jammybread/utilities/show_snack_bar.dart';
 
 class AuthService {
 // get instance of firebase auth
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
+  var verificationId = ''.obs;
   // get current user
   User? getCurretnUser() {
     return _firebaseAuth.currentUser;
@@ -24,14 +25,16 @@ class AuthService {
     }
     //  catch any errors
     on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.toString());
+      ShowSnackBar(message:  e.toString());
       throw Exception(e.code);
     }
   }
 
   // email sign up
   Future<UserCredential> signUpWithEmailPassword(
-      String email, String password, BuildContext context) async {
+    String email,
+    String password,
+  ) async {
     //try sign user up
 
     try {
@@ -43,9 +46,53 @@ class AuthService {
     //  catch any errors
     on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-      showSnackBar(context, ex.message);
       throw Exception(e.code);
     }
+  }
+
+  // phone number verification
+  Future<void> phoneAuthentication(
+    String phoneNumber,
+  ) async {
+    //try sign user up
+
+    try {
+      await _firebaseAuth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (credential) async {
+          await _firebaseAuth.signInWithCredential(credential);
+        },
+        codeSent: (verificationId, forceResendingToken) {
+          this.verificationId.value = verificationId;
+        },
+        codeAutoRetrievalTimeout: (verificationId) {
+          this.verificationId.value = verificationId;
+        },
+        verificationFailed: (e) {
+          if (e.code == 'Invalid-phone-number') {
+            const ShowSnackBar(
+                message: 'Error: The provided number is not valid');
+          } else {
+            const ShowSnackBar(
+                message: 'Error: Somthing went wrong. Try again');
+          }
+        },
+      );
+    }
+
+    //  catch any errors
+    on FirebaseAuthException catch (e) {
+      ShowSnackBar(message:  e.code);
+      throw Exception(e.code);
+    }
+  }
+
+  // verify OTP
+  Future<bool> verifyOTP(String otp) async {
+    var credentials = await _firebaseAuth.signInWithCredential(
+        PhoneAuthProvider.credential(
+            verificationId: verificationId.value, smsCode: otp));
+    return credentials.user != null ? true : false;
   }
 
   // email sign out

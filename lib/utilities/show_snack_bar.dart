@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void showSnackBar(BuildContext context, String text) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+class ShowSnackBar extends StatelessWidget {
+  final String message;
+  const ShowSnackBar({super.key, required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetSnackBar(
+      message: message,
+    );
+  }
 }

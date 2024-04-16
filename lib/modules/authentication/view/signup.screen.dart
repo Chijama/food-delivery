@@ -1,10 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:jammybread/modules/authentication/controller/sign_up_controller.dart';
+import 'package:jammybread/modules/authentication/view/phone_number_verifiction_screen.dart';
 import 'package:jammybread/services/firebase_auth_methods.dart';
 import 'package:jammybread/utilities/colors.dart';
-import 'package:jammybread/utilities/show_snack_bar.dart';
 import 'package:jammybread/common_widgets/custom_button.dart';
 import 'package:jammybread/common_widgets/text_field.dart';
 import 'package:jammybread/utilities/strings.dart';
@@ -20,16 +21,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
+  final controller = Get.put(SignUpController());
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  
-
-  bool? isDisabled = true;
-
-  String phoneNumber = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +36,9 @@ class _SignUpState extends State<SignUp> {
             const SizedBox(height: 24),
             EmailTextField(
               labelText: 'Email Address',
-              controller: emailController,
-              onChanged: (val) {
-                setState(() {
-                  if (val.isEmpty) {
-                    isDisabled = true;
-                  } else {
-                    isDisabled = false;
-                  }
-                });
+              controller: controller.emailController,
+              onChanged: (value) {
+                controller.onChanged(value);
               },
             ),
             Text('Phone Number', style: blackWeight400size14()),
@@ -61,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                 filled: true,
                 fillColor: light80,
                 hintText: '000 000 0000',
-                // hintStyle: darkWeight500size12(),
+                hintStyle: TextStyle(color: dark60),
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 0.0, horizontal: 14.0),
                 border: OutlineInputBorder(
@@ -87,28 +75,20 @@ class _SignUpState extends State<SignUp> {
 
               initialCountryCode: 'NG', // Initial selection of the country code
               onChanged: (phone) {
-                setState(() {
-                  phoneNumber = phone.completeNumber;
-                  if (phone.toString().isEmpty) {
-                    isDisabled = true;
-                  } else {
-                    isDisabled = false;
-                  }
-                });
+                controller.phoneNumber.value = phone.completeNumber;
+                print(controller.phoneNumber);
+                controller.onChanged(controller.phoneNumber.value.trim());
               },
+              // onSubmitted: (phone) {
+              //   controller.phoneNumber = phone;
+              // },
             ),
             InputField(
               labelText: 'Password',
-              controller: passwordController,
+              controller: controller.passwordController,
               suffixIcon: true,
-              onChanged: (val) {
-                setState(() {
-                  if (val.isEmpty) {
-                    isDisabled = true;
-                  } else {
-                    isDisabled = false;
-                  }
-                });
+              onChanged: (value) {
+                controller.onChanged(value);
               },
             ),
             const SizedBox(height: 38),
@@ -134,16 +114,22 @@ class _SignUpState extends State<SignUp> {
               child: Image.asset(Strings.google),
             ),
             const Spacer(),
-            PrimaryButton(
-              isDisabled: isDisabled!,
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  AuthService().signUpWithEmailPassword(
-      emailController.value.text,  passwordController.value.text, context);
-                }
-              },
-              buttonText: 'Sign Up',
-            )
+            Obx(() {
+              return PrimaryButton(
+                isDisabled: controller.isDisabled.value,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    print(
+                        'final number: ${controller.phoneNumber.value.trim()}');
+                    SignUpController.instance.phoneAuthentication(
+                        controller.phoneNumber.value.trim());
+                    Get.toNamed(PhoneVerification.routeName,
+                        arguments: controller.phoneNumber.value);
+                  }
+                },
+                buttonText: 'Sign Up',
+              );
+            })
           ],
         ),
       ),

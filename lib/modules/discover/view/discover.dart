@@ -6,6 +6,8 @@ import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/utilities/colors.dart';
 
 class Discover extends StatelessWidget {
+  static const String routeName = '/discover';
+
   const Discover({super.key});
 
   Widget appBar(BuildContext context) {

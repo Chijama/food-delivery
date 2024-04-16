@@ -12,8 +12,10 @@ class Strings {
   static const String clockIcon = 'assets/icons/clock.svg';
   static const String exportIcon = 'assets/icons/export.svg';
   static const String routeSquareIcon = 'assets/icons/route-square.svg';
-  static const String filterIcon = 'assets/icons/filter.svg';
+  static const String filterIcon = 'assets/icons/filCter.svg';
   static const String arrowDown ='assets+icons+arrow-down.svg';
+  static const String edit2 = 'assets/icons/edit-2.png';
+
 
 
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
