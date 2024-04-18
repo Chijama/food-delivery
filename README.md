@@ -27,8 +27,5 @@ Link to latest APK - (coming soon)
 
 
 
-Major Challenge I faced:
-- Working with scaled_list library 
-
 
 
