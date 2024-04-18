@@ -1,14 +1,10 @@
-![image](https://github.com/Chijama/food-delivery/assets/63909584/96281c95-88a7-4ba9-ba5e-68853626b053)# Food delivery app
+# Food delivery app
 
 a simple open source food delivery mobile application build using flutter to practise and showcase certain features
 such as: 
 - firebase email authentication
 - firebase phone no. authentication
 - light and dark themes
-![food_delievry-login](https://github.com/Chijama/food-delivery/assets/63909584/48521d5b-fed4-4b13-90c3-854c8e61a1de)
-
-![food_delievry-dicover](https://github.com/Chijama/food-delivery/assets/63909584/5f972026-4877-4a9e-8c97-81547c683811)
-
 
 The design was sourced from https://www.figma.com/file/t2V0AEsOnMjaz6tHrNlYlM/Food-Delivery-App-UI-Kit-(Community)?type=design&node-id=220-1223&mode=design&t=kRLFFglvOvtQUybd-0
 
@@ -22,6 +18,13 @@ Future Features to consider :
 
 
 Link to latest APK - (coming soon)
+
+![food_delievry-login](https://github.com/Chijama/food-delivery/assets/63909584/48521d5b-fed4-4b13-90c3-854c8e61a1de)
+
+![food_delievry-dicover](https://github.com/Chijama/food-delivery/assets/63909584/5f972026-4877-4a9e-8c97-81547c683811)
+
+
+
 
 
 Major Challenge I faced:
