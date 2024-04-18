@@ -1,7 +1,7 @@
 # Food delivery app
 
-a simple open source food delivery mobile application build using flutter to practise and showcase certain features
-such as: 
+This repository contains a simple, open-source food delivery mobile application built with Flutter. It's designed to showcase key features
+such as
 - firebase email authentication
 - firebase phone no. authentication
 - light and dark themes
