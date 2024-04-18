@@ -50,6 +50,7 @@ class _SignUpState extends State<SignUp> {
                 fillColor: light80,
                 hintText: '000 000 0000',
                 hintStyle: TextStyle(color: dark60),
+                
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 0.0, horizontal: 14.0),
                 border: OutlineInputBorder(
@@ -75,10 +76,11 @@ class _SignUpState extends State<SignUp> {
 
               initialCountryCode: 'NG', // Initial selection of the country code
               onChanged: (phone) {
-                controller.phoneNumber.value = phone.completeNumber;
-                print(controller.phoneNumber);
-                controller.onChanged(controller.phoneNumber.value.trim());
+                controller.onPhoneNumberChanged(phone.completeNumber);
+                print(controller.phoneNumber.value);
+                controller.onChanged(phone.completeNumber.trim());
               },
+
               // onSubmitted: (phone) {
               //   controller.phoneNumber = phone;
               // },
@@ -126,6 +128,11 @@ class _SignUpState extends State<SignUp> {
                     Get.toNamed(PhoneVerification.routeName,
                         arguments: controller.phoneNumber.value);
                   }
+                  print('final number: ${controller.phoneNumber.value.trim()}');
+                  SignUpController.instance
+                      .phoneAuthentication(controller.phoneNumber.value.trim());
+                  Get.toNamed(PhoneVerification.routeName,
+                      arguments: {controller.phoneNumber.value});
                 },
                 buttonText: 'Sign Up',
               );

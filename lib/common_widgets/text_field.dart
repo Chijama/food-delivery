@@ -158,7 +158,11 @@ class EmailTextField extends StatelessWidget {
   final TextEditingController? controller;
   final void Function(String)? onChanged;
   const EmailTextField(
-      {super.key, required this.labelText, this.hintText, this.controller, this.onChanged});
+      {super.key,
+      required this.labelText,
+      this.hintText,
+      this.controller,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -170,9 +174,9 @@ class EmailTextField extends StatelessWidget {
         validator: (value) {
           if (value!.isEmpty) {
             return 'Invalid input';
-          } else if (RegExp(
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
-          ).hasMatch(value)) {
+          } else if (!RegExp(
+                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+              .hasMatch(value)) {
             return 'Invalid email address';
           }
           return null;

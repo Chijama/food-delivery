@@ -13,10 +13,8 @@ class Strings {
   static const String exportIcon = 'assets/icons/export.svg';
   static const String routeSquareIcon = 'assets/icons/route-square.svg';
   static const String filterIcon = 'assets/icons/filCter.svg';
-  static const String arrowDown ='assets+icons+arrow-down.svg';
-  static const String edit2 = 'assets/icons/edit-2.png';
-
-
+  static const String arrowDown = 'assets+icons+arrow-down.svg';
+  static const String edit2 = 'assets/icons/edit-2.svg';
 
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';

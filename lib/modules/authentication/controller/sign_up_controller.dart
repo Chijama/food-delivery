@@ -10,6 +10,8 @@ class SignUpController extends GetxController {
   // Data from TextFields
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
   RxString phoneNumber = ''.obs;
 
 // Logic
