@@ -1,16 +1,29 @@
-# jammybread
+# Food delivery app
 
-A new Flutter project.
+This repository contains a simple, open-source food delivery mobile application built with Flutter. It's designed to showcase key features
+such as:
+- [X] Firebase email authentication 
+- [x] Light and dark themes
+- [ ] Firebase phone no. authentication
+- [ ] Internet connection check
+- [ ] Google Maps API
+- [ ] Store data in Firestore
+- [ ] Google sign in
+- [ ] Local storage using shared preference
 
-## Getting Started
+The design was sourced from https://www.figma.com/file/t2V0AEsOnMjaz6tHrNlYlM/Food-Delivery-App-UI-Kit-(Community)?type=design&node-id=220-1223&mode=design&t=kRLFFglvOvtQUybd-0
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Link to latest APK - (coming soon)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![food_delievry-login](https://github.com/Chijama/food-delivery/assets/63909584/48521d5b-fed4-4b13-90c3-854c8e61a1de)
+
+![food_delievry-dicover](https://github.com/Chijama/food-delivery/assets/63909584/5f972026-4877-4a9e-8c97-81547c683811)
+
+
+
+
+
+
+
