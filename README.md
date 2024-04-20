@@ -1,20 +1,18 @@
 # Food delivery app
 
 This repository contains a simple, open-source food delivery mobile application built with Flutter. It's designed to showcase key features
-such as
-- firebase email authentication
-- firebase phone no. authentication
-- light and dark themes
+such as:
+- [X] Firebase email authentication 
+- [x] Light and dark themes
+- [ ] Firebase phone no. authentication
+- [ ] Internet connection check
+- [ ] Google Maps API
+- [ ] Store data in Firestore
+- [ ] Google sign in
+- [ ] Local storage using shared preference
 
 The design was sourced from https://www.figma.com/file/t2V0AEsOnMjaz6tHrNlYlM/Food-Delivery-App-UI-Kit-(Community)?type=design&node-id=220-1223&mode=design&t=kRLFFglvOvtQUybd-0
 
-
-Future Features to consider :
-- internet connection check
-- google maps api
-- store data in firestore
-- google sign in
-- local storage using shared preference
 
 
 Link to latest APK - (coming soon)
