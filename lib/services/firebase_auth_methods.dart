@@ -61,6 +61,7 @@ class AuthService {
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           await _firebaseAuth.signInWithCredential(credential);
+          ShowSnackBar(message: "Phone number automatically verified and user signed in: ${_firebaseAuth.currentUser?.uid}");
         },
         codeSent: (verificationId, forceResendingToken) {
           this.verificationId.value = verificationId;
@@ -70,8 +71,8 @@ class AuthService {
         },
         verificationFailed: (e) {
           if (e.code == 'Invalid-phone-number') {
-            const ShowSnackBar(
-                message: 'Error: The provided number is not valid');
+            ShowSnackBar(
+                message: 'Failed to verify phone number: ${e.message}');
           } else {
             const ShowSnackBar(
                 message: 'Error: Somthing went wrong. Try again');
@@ -92,11 +93,22 @@ class AuthService {
     var credentials = await _firebaseAuth.signInWithCredential(
         PhoneAuthProvider.credential(
             verificationId: verificationId.value, smsCode: otp));
+
+            
     return credentials.user != null ? true : false;
   }
 
   // email sign out
   Future<void> signOut() async {
     return await _firebaseAuth.signOut();
+
+
+
   }
+
+
+  
+    
+
+  
 }

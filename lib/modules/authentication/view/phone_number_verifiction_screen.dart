@@ -20,6 +20,8 @@ class PhoneVerification extends StatefulWidget {
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
+  final controller = Get.put(PhoneVerificationController());
+
   bool? isDisabled = true;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   var otp;
@@ -90,9 +92,9 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                             SizedBox(
                               height: 60,
                               child: OtpTextField(
-                                fieldWidth: 62,
-                                numberOfFields: 4,
-                                margin: const EdgeInsets.only(right: 22),
+                                // fieldWidth: 62,
+                                numberOfFields: 6,
+                                margin: const EdgeInsets.only(right: 18),
 
                                 filled: true,
                                 fillColor: light80,
@@ -142,10 +144,13 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                         ),
                       ),
                       PrimaryButton(
-                          onPressed: () {
-                            PhoneVerificationController.instance
-                                      .verifyPhoneNumber(otp);
-                          }, buttonText: 'Verify and Continue')
+                        onPressed: () {
+                          print(otp);
+                          PhoneVerificationController.instance
+                              .verifyPhoneNumber(otp);
+                        },
+                        buttonText: 'Verify and Continue',
+                      )
                     ],
                   ),
                 ),
