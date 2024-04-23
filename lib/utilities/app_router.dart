@@ -7,6 +7,7 @@ import 'package:jammybread/modules/discover/view/discover.dart';
 import 'package:jammybread/modules/discover/view/discover.search.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
+import 'package:jammybread/modules/profile/view/edit.profile.screen.dart';
 import 'package:jammybread/services/auth_gate.dart';
 
 class AppRouter {
@@ -26,5 +27,8 @@ class AppRouter {
     // Discover
     Discover.routeName: (context) => const Discover(),
     // DiscoverSearch.routeName: (context) => const DiscoverSearch(),
+
+    // Profile
+    EditProfile.routeName:(context) => const EditProfile(),
   };
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:jammybread/common_widgets/app.bar.dart';
 import 'package:jammybread/modules/authentication/controller/sign_up_controller.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
 import 'package:jammybread/utilities/colors.dart';
@@ -9,16 +10,16 @@ import 'package:jammybread/common_widgets/text_field.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/textstyles.dart';
 
-class SignUp extends StatefulWidget {
-  static const String routeName = '/sign-up';
+class EditProfile extends StatefulWidget {
+  static const String routeName = '/edit-profile';
 
-  const SignUp({super.key});
+  const EditProfile({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _EditProfileState extends State<EditProfile> {
   final controller = Get.put(SignUpController());
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -26,6 +27,9 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: light100,
+      appBar: const CustomAppBar(
+        title: 'Edit Profile',
+      ),
       body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints viewportConatraints) {
         return SingleChildScrollView(
@@ -51,9 +55,13 @@ class _SignUpState extends State<SignUp> {
                                 controller.onChanged(value);
                               },
                             ),
-                            InputField(
-                              labelText: 'Full Name',
-                              controller: controller.fullNameController,
+                            Row(
+                              children: [
+                                InputField(
+                                  labelText: 'Full Name',
+                                  controller: controller.fullNameController,
+                                )
+                              ],
                             ),
                             Text('Phone Number', style: blackWeight400size14()),
                             const SizedBox(height: 8),
@@ -139,7 +147,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                       Obx(() {
                         return PrimaryButton(
-                          isLoading: controller.isLoading.value,
                           isDisabled: controller.isDisabled.value,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
@@ -155,7 +162,7 @@ class _SignUpState extends State<SignUp> {
                               print(
                                   'final number: ${controller.phoneNumber.value.trim()}');
                               SignUpController.instance
-                                  .createrUserWithEmailSignIn(user);
+                                  .createUserWithPhoneverification(user);
                             }
                             // print(
                             //     'final number: ${controller.phoneNumber.value.trim()}');

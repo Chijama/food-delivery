@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:jammybread/modules/profile/view/edit.profile.screen.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/common_widgets/category.item.dart';
@@ -9,6 +11,51 @@ import 'package:jammybread/utilities/colors.dart';
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home-screen';
   const HomeScreen({super.key});
+
+  Widget drawer() {
+    return Drawer(
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 30,
+          // horizontal: 48,
+          top: 60,
+        ),
+        child: ListView(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  const CircleAvatar(
+                    radius: 37,
+                    backgroundColor: Colors.red,
+                  ),
+                  const SizedBox(height: 10),
+                  Text('Blessing Asukwo', style: blackWeight500size14()),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
+             DrawerTile(
+              label: 'Profile',
+              onTap:() => Get.toNamed(EditProfile.routeName),
+              icon: Strings.frame,
+            ),
+            const DrawerTile(
+              label: 'Settings',
+              icon: Strings.setting,
+            ),
+            const DrawerTile(label: 'Invite and earn', icon: Strings.moneys),
+            const DrawerTile(label: 'Visit Our Blog', icon: Strings.global),
+            const DrawerTile(label: 'Contact Us', icon: Strings.messages3),
+            const DrawerTile(label: 'FAQs', icon: Strings.messageQuestion),
+            const DrawerTile(label: 'Rate Us', icon: Strings.star),
+            const DrawerTile(label: 'Log Out', icon: Strings.logout)
+          ],
+        ),
+      ),
+    );
+  }
 
   // Top Section
   Widget get topSection => Padding(
@@ -308,5 +355,29 @@ class HomeScreen extends StatelessWidget {
     } else {
       return 'Good evening';
     }
+  }
+}
+
+class DrawerTile extends StatelessWidget {
+  const DrawerTile({
+    super.key,
+    required this.label,
+    required this.icon,
+    this.onTap,
+  });
+  final String label;
+  final String icon;
+ final void Function()? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap:onTap,
+      child: ListTile(
+          title: Text(
+            label,
+            style: blackWeight400size14(),
+          ),
+          leading: SvgPicture.asset(icon)),
+    );
   }
 }

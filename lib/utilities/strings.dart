@@ -15,6 +15,14 @@ class Strings {
   static const String filterIcon = 'assets/icons/filCter.svg';
   static const String arrowDown = 'assets+icons+arrow-down.svg';
   static const String edit2 = 'assets/icons/edit-2.svg';
+  static const String frame = 'assets/icons/frame.svg';
+  static const String global = 'assets/icons/global.svg';
+  static const String logout = 'assets/icons/logout.svg';
+static const String messageQuestion = 'assets/icons/message-question.svg';
+  static const String messages3 = 'assets/icons/messages-3.svg';
+  static const String moneys = 'assets/icons/moneys.svg';
+  static const String setting = 'assets/icons/setting.svg';
+  static const String star = 'assets/icons/star.svg';
 
   static const String kfcLogo = 'assets/icons/kfc_logo.svg';
   static const String harveysLogo = 'assets/icons/harveys_logo.svg';

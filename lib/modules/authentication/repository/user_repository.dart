@@ -7,11 +7,11 @@ class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
 
-  createUser(UserModel user) async {
+  createUser(UserModel user, bool isLoading) async {
    await _db
         .collection("Users")
         .add(user.toJson())
-        .whenComplete(() => const ShowSnackBar(
+        .whenComplete(() =>  ShowSnackBar(
             message: 'Success: Your account has been created'))
         .catchError((error, stackTrace) {
       ShowSnackBar(message: 'Error: Something went wromt. Try again.');
