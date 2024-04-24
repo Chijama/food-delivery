@@ -8,14 +8,23 @@ class UserRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   createUser(UserModel user, bool isLoading) async {
-   await _db
-        .collection("Users")
-        .add(user.toJson())
-        .whenComplete(() =>  ShowSnackBar(
-            message: 'Success: Your account has been created'))
-        .catchError((error, stackTrace) {
-      ShowSnackBar(message: 'Error: Something went wromt. Try again.');
-      print(error.toString());
-    });
+     try {
+      await _db.collection("Users").add(user.toJson()).then((result) {
+        ShowSnackBar(message: 'Success: Your account has been created');
+      });
+    } catch (e) {
+      ShowSnackBar(message: 'Error: Something went wrong. Try again.');
+      print(e.toString());
+      throw Exception('Failed to create user');
+    }
+  //  await _db
+  //       .collection("Users")
+  //       .add(user.toJson())
+  //       .whenComplete(() =>  ShowSnackBar(
+  //           message: 'Success: Your account has been created'))
+  //       .catchError((error, stackTrace) {
+  //     ShowSnackBar(message: 'Error: Something went wromt. Try again.');
+  //     print(error.toString());
+  //   });
   }
 }

@@ -11,7 +11,7 @@ class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
 
   RxBool isDisabled = true.obs;
-  var isLoading = false.obs;  // Observable for loading state
+  var isLoading = false.obs; // Observable for loading state
   // Data from TextFields
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -26,9 +26,13 @@ class SignUpController extends GetxController {
 // For enabling or disabling the button
   Future<void> createUserWithPhoneverification(UserModel user) async {
     isLoading(true);
-    await userRepo.createUser(user);
+    print('Loading Start');
+    await userRepo.createUser(user, isLoading.value);
+    print('create user done');
+
     AuthService().phoneAuthentication(user.phoneNo);
-     isLoading(false);
+    
+    isLoading(false);
     Get.toNamed(PhoneVerification.routeName, arguments: user.phoneNo);
   }
 
@@ -50,19 +54,32 @@ class SignUpController extends GetxController {
   }
 
   void createrUserWithEmailSignIn(UserModel user) async {
-     isLoading(true);
-     try {
-    await userRepo.createUser(user);  // Make sure this async call is awaited and completed
-    var error = await AuthService().signUpWithEmailPassword(user.email, user.password);
+    isLoading(true);
+    print('Loading Start');
 
-    ShowSnackBar(
-      message: error.toString(),
-    );
+    try {
+      await userRepo.createUser(
+          user,
+          isLoading
+              .value); // Make sure this async call is awaited and completed
+    print('Create user done, authenticate user begin');
+              
+      var error = await AuthService()
+          .signUpWithEmailPassword(user.email, user.password);
+    print('authenticate done');
+
+      ShowSnackBar(
+        message: error.toString(),
+      );
     } catch (e) {
-    ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
-  } finally {
-    isLoading(false);  // Ensure loading stops regardless of outcome
-  }
+    print('ERRORRRRRRRRR');
+
+      ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
+    } finally {
+    print('Loading DONE');
+
+      isLoading(false); // Ensure loading stops regardless of outcome
+    }
   }
 
   void phoneAuthentication(String phone) {
