@@ -34,7 +34,8 @@ class InputField extends StatefulWidget {
     this.onTap,
     this.keyboardType,
     this.inputFormatters,
-    this.onChanged, this.initialValue,
+    this.onChanged,
+    this.initialValue,
   });
 
   @override
@@ -42,7 +43,7 @@ class InputField extends StatefulWidget {
 }
 
 class _InputFieldState extends State<InputField> {
-  bool passwordVisibility = false;
+  bool passwordVisibility = true;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class _InputFieldState extends State<InputField> {
         const SizedBox(height: 8),
 
         TextFormField(
-          initialValue:widget.initialValue ,
+          initialValue: widget.initialValue,
           textAlign: TextAlign.start,
           textAlignVertical: TextAlignVertical.center,
           controller: widget.controller,

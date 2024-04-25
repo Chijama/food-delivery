@@ -4,10 +4,11 @@ This repository contains a simple, open-source food delivery mobile application 
 such as:
 - [X] Firebase email authentication 
 - [x] Light and dark themes
+- [X] Store data in Firestore
+- [X] Fetch data in Firestore
 - [ ] Firebase phone no. authentication
 - [ ] Internet connection check
 - [ ] Google Maps API
-- [ ] Store data in Firestore
 - [ ] Google sign in
 - [ ] Local storage using shared preference
 

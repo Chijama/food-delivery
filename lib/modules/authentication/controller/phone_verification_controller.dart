@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jammybread/modules/authentication/repository/authentication_repository.dart';
+import 'package:jammybread/repository/authentication_repository.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
 
 class PhoneVerificationController extends GetxController {
