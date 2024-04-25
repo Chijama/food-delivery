@@ -60,7 +60,7 @@ class _InputFieldState extends State<InputField> {
           controller: widget.controller,
           autofocus: widget.autoFocus,
           readOnly: widget.readOnly,
-          obscureText: passwordVisibility,
+          obscureText: !passwordVisibility,
           keyboardType: TextInputType.text,
           inputFormatters: widget.inputFormatters,
           onTap: widget.onTap,

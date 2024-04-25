@@ -28,9 +28,9 @@ class SignUpController extends GetxController {
 // For enabling or disabling the button
   Future<void> createUserWithPhoneverification(UserModel user) async {
     isLoading(true);
-    print('Loading Start');
+    debugPrint('Loading Start');
     await userRepo.createUser(user, isLoading.value);
-    print('create user done');
+    debugPrint('create user done');
 
     AuthenticationRepository.instance.phoneAuthentication(user.phoneNo);
 
@@ -50,40 +50,38 @@ class SignUpController extends GetxController {
     phoneNumber.value = value;
   }
 
-
-
   void createrUserWithEmailSignIn(UserModel user) async {
     isLoading(true);
-    print('Loading Start');
+    debugPrint('Loading Start');
     try {
       // Step 1: Authenticate the user first
-      print('Authenticate user begin');
+      debugPrint('Authenticate user begin');
       var authResult = await AuthService()
           .signUpWithEmailPassword(user.email, user.password);
-      print('Authentication done');
+      debugPrint('Authentication done');
 
       // Check if authentication was successful and user is returned
       if (authResult.user != null) {
-        print('Create user data begin');
+        debugPrint('Create user data begin');
         // Step 2: Create user data in Firestore after successful authentication
         await userRepo.createUser(user, isLoading.value);
-        print('Create user data done');
-        ShowSnackBar(message: 'Success: Account created and user data saved!');
+        debugPrint('Create user data done');
+        const ShowSnackBar(message: 'Success: Account created and user data saved!');
       } else {
         // Handle the case where no user is returned after authentication
-        print('Authentication succeeded but no user returned');
-        ShowSnackBar(
+        debugPrint('Authentication succeeded but no user returned');
+        const ShowSnackBar(
             message: 'Authentication succeeded but no user data was returned.');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        debugPrint('The account already exists for that email.');
       } else {
-        print('Registration error: ${e.message}');
+        debugPrint('Registration error: ${e.message}');
         ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
       }
     } finally {
-      print('Loading DONE');
+      debugPrint('Loading DONE');
       isLoading(false); // Ensure loading stops regardless of outcome
       Get.toNamed(NavBar.routeName);
     }

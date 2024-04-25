@@ -94,7 +94,7 @@ class _SignUpState extends State<SignUp> {
                               onChanged: (phone) {
                                 controller
                                     .onPhoneNumberChanged(phone.completeNumber);
-                                print(controller.phoneNumber.value);
+                                debugPrint(controller.phoneNumber.value);
                                 controller
                                     .onChanged(phone.completeNumber.trim());
                               },
@@ -152,12 +152,12 @@ class _SignUpState extends State<SignUp> {
                                   password: controller
                                       .passwordController.value.text
                                       .trim());
-                              print(
+                              debugPrint(
                                   'final number: ${controller.phoneNumber.value.trim()}');
                               SignUpController.instance
                                   .createrUserWithEmailSignIn(user);
                             }
-                            // print(
+                            // debugPrint(
                             //     'final number: ${controller.phoneNumber.value.trim()}');
                             // SignUpController.instance.phoneAuthentication(
                             //     controller.phoneNumber.value.trim());

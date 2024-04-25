@@ -30,12 +30,22 @@ class _EditProfileState extends State<EditProfile> {
       body: FutureBuilder<UserModel>(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             // Make sure to handle any errors here
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
             UserModel userdata = snapshot.data!;
+            // Data from TextFields
+            final TextEditingController emailController =
+                TextEditingController(text: userdata.email);
+            final TextEditingController passwordController =
+                TextEditingController(text: userdata.password);
+            final TextEditingController fullNameController =
+                TextEditingController(text: userdata.fullName);
+            final TextEditingController phoneController =
+                TextEditingController(text: userdata.phoneNo);
+
             // Build your widgets here using userdata
             return LayoutBuilder(builder:
                 (BuildContext context, BoxConstraints viewportConatraints) {
@@ -57,32 +67,33 @@ class _EditProfileState extends State<EditProfile> {
                                 children: [
                                   const SizedBox(height: 24),
                                   InputField(
-                                    initialValue: userdata.email,
                                     labelText: 'Email Address',
-                                    // controller: controller.emailController,
+                                    controller: emailController,
                                     onChanged: (value) {
                                       controller.onChanged(value);
                                     },
                                   ),
                                   InputField(
-                                    initialValue: userdata.fullName,
-
                                     labelText: 'Full Name',
-                                    // controller: controller.fullNameController,
+                                    controller: fullNameController,
+                                    onChanged: (value) {
+                                      controller.onChanged(value);
+                                    },
                                   ),
                                   InputField(
-                                    initialValue: userdata.phoneNo,
-
                                     labelText: 'Phone Number',
-                                    // controller: controller.fullNameController,
+                                    controller: phoneController,
+                                    onChanged: (value) {
+                                      controller.onChanged(value);
+                                    },
                                   ),
                                   InputField(
-                                    initialValue: userdata.password,
                                     suffixIcon: true,
-
                                     labelText: 'Password',
-
-                                    // controller: controller.fullNameController,
+                                    controller: passwordController,
+                                    onChanged: (value) {
+                                      controller.onChanged(value);
+                                    },
                                   ),
                                   const SizedBox(height: 38),
                                 ],
@@ -91,32 +102,28 @@ class _EditProfileState extends State<EditProfile> {
                             Obx(() {
                               return PrimaryButton(
                                 isDisabled: controller.isDisabled.value,
-                                onPressed: () {
+                                onPressed: () async {
                                   if (formKey.currentState!.validate()) {
-                                    // final user = UserModel(
-                                    //     fullName: controller
-                                    //         .fullNameController.value.text,
-                                    //     email: controller
-                                    //         .emailController.value.text
-                                    //         .trim(),
-                                    //     phoneNo: controller.phoneNumber.value
-                                    //         .trim(),
-
+                                    final userData = UserModel(
+                                      id: userdata.id,
+                                        fullName: fullNameController.value.text,
+                                        email:
+                                            emailController.value.text.trim(),
+                                        phoneNo:
+                                            phoneController.value.text.trim(),
+                                        password:
+                                            passwordController.value.text);
+                                    await controller.updateRecord(userData);
                                     //         );
-                                    // print(
+                                    // debugPrint(
                                     //     'final number: ${controller.phoneNumber.value.trim()}');
                                     // SignUpController.instance
                                     //     .createUserWithPhoneverification(
                                     //         user);
                                   }
-                                  // print(
-                                  //     'final number: ${controller.phoneNumber.value.trim()}');
-                                  // SignUpController.instance.phoneAuthentication(
-                                  //     controller.phoneNumber.value.trim());
-                                  // Get.toNamed(PhoneVerification.routeName,
-                                  //     arguments: {controller.phoneNumber.value});
+                               
                                 },
-                                buttonText: 'Sign Up',
+                                buttonText: 'Save Changes',
                               );
                             })
                           ],
@@ -128,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
               );
             });
           } else {
-            return Center(child: Text('No user data available'));
+            return const Center(child: Text('No user data available'));
           }
         },
         future: controller.getUserData(),

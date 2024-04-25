@@ -366,11 +366,9 @@ class BreakfastView extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text('\$5.84 ',
-                                      style:blackWeight400size16()
-                                          .copyWith(
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                          )),
+                                      style: blackWeight400size16().copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                      )),
                                   Text(
                                     '\$4.59',
                                     style: blueWeight600size16(),
@@ -415,7 +413,7 @@ class _FiltersState extends State<Filters> {
           state = !state;
         });
         if (kDebugMode) {
-          print('${widget.text}: $state');
+          debugPrint('${widget.text}: $state');
         }
       },
       child: Container(

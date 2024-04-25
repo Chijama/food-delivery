@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/signup_email_password_failure.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
@@ -20,25 +21,33 @@ class AuthenticationRepository extends GetxController {
   }
 
   _setInitialScreen(User? user) {
-    user == null ? Get.offAll(() => const WelcomeScreen()) : Get.offAll
-  (() => const NavBar());
+    user == null
+        ? Get.offAll(() => const WelcomeScreen())
+        : Get.offAll(() => const NavBar());
   }
-Future<UserCredential>createUserWithEmailAndPassword(String email, String password) async {
-  try {
-    UserCredential userCredential =await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    
-    firebaseUser.value != null ? Get.offAll(() => const NavBar()) : Get.to(() => const WelcomeScreen());
-       return userCredential;
-  } on FirebaseAuthException catch(e) {
-    final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-    print('FIREBASE AUTH EXCEPTION - ${e.message}');
-    throw ex;
-  } catch (_) {
-    const ex = SignUpWithEmailAndPasswordFailure();
-    print('EXCEPTION - ${ex.message}');
-    throw ex;
+
+  Future<UserCredential> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
+
+      firebaseUser.value != null
+          ? Get.offAll(() => const NavBar())
+          : Get.to(() => const WelcomeScreen());
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
+
+     debugPrint('FIREBASE AUTH EXCEPTION - ${e.message}');
+
+      throw ex;
+    } catch (_) {
+      const ex = SignUpWithEmailAndPasswordFailure();
+      debugPrint('EXCEPTION - ${ex.message}');
+      throw ex;
+    }
   }
-}
 
   Future<void> phoneAuthentication(
     String phoneNumber,
@@ -87,22 +96,18 @@ Future<UserCredential>createUserWithEmailAndPassword(String email, String passwo
 
     return credentials.user != null ? true : false;
   }
-Future<void> loginWithEmailAndPassword(String email, String password) async {
-  try {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
-  } on FirebaseAuthException catch (e) {
-    // Handle the Firebase Auth exception
-  } catch (_) {
-    // Handle any other exceptions
+
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      // Handle the Firebase Auth exception
+    } catch (_) {
+      // Handle any other exceptions
+    }
+  }
+
+  Future<void> logout() async {
+    await _auth.signOut();
   }
 }
-
-Future<void> logout() async {
-  await _auth.signOut();
-}
-
-
-
-  
-}
-

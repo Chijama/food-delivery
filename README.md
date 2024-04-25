@@ -6,6 +6,7 @@ such as:
 - [x] Light and dark themes
 - [X] Store data in Firestore
 - [X] Fetch data in Firestore
+- [X] Update data in Firestore
 - [ ] Firebase phone no. authentication
 - [ ] Internet connection check
 - [ ] Google Maps API
