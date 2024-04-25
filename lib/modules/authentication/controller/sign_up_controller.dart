@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
+import 'package:jammybread/modules/authentication/repository/authentication_repository.dart';
 import 'package:jammybread/modules/authentication/repository/user_repository.dart';
 import 'package:jammybread/modules/authentication/view/phone_number_verifiction_screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
@@ -30,8 +32,8 @@ class SignUpController extends GetxController {
     await userRepo.createUser(user, isLoading.value);
     print('create user done');
 
-    AuthService().phoneAuthentication(user.phoneNo);
-    
+    AuthenticationRepository.instance.phoneAuthentication(user.phoneNo);
+
     isLoading(false);
     Get.toNamed(PhoneVerification.routeName, arguments: user.phoneNo);
   }
@@ -48,37 +50,42 @@ class SignUpController extends GetxController {
     phoneNumber.value = value;
   }
 
-  void submitPhoneNumber() {
-    // Perform any action with the phone number, such as validation or saving
-    print('Submitted phone number: ${phoneNumber.value}');
-  }
+
 
   void createrUserWithEmailSignIn(UserModel user) async {
     isLoading(true);
     print('Loading Start');
-
     try {
-      await userRepo.createUser(
-          user,
-          isLoading
-              .value); // Make sure this async call is awaited and completed
-    print('Create user done, authenticate user begin');
-              
-      var error = await AuthService()
+      // Step 1: Authenticate the user first
+      print('Authenticate user begin');
+      var authResult = await AuthService()
           .signUpWithEmailPassword(user.email, user.password);
-    print('authenticate done');
+      print('Authentication done');
 
-      ShowSnackBar(
-        message: error.toString(),
-      );
-    } catch (e) {
-    print('ERRORRRRRRRRR');
-
-      ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
+      // Check if authentication was successful and user is returned
+      if (authResult.user != null) {
+        print('Create user data begin');
+        // Step 2: Create user data in Firestore after successful authentication
+        await userRepo.createUser(user, isLoading.value);
+        print('Create user data done');
+        ShowSnackBar(message: 'Success: Account created and user data saved!');
+      } else {
+        // Handle the case where no user is returned after authentication
+        print('Authentication succeeded but no user returned');
+        ShowSnackBar(
+            message: 'Authentication succeeded but no user data was returned.');
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      } else {
+        print('Registration error: ${e.message}');
+        ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
+      }
     } finally {
-    print('Loading DONE');
-
+      print('Loading DONE');
       isLoading(false); // Ensure loading stops regardless of outcome
+      Get.toNamed(NavBar.routeName);
     }
   }
 

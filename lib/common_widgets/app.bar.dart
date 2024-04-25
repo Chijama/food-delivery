@@ -10,11 +10,12 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
       this.moreOnPressed,
       this.searchOnPressed,
       this.shoppingOnPressed,
-      this.exportOnPressed, this.title = ''})
+      this.exportOnPressed,
+      this.title = ''})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
   final void Function()? exportOnPressed;
-final String title;
+  final String title;
   final void Function()? moreOnPressed;
   final void Function()? searchOnPressed;
   final void Function()? shoppingOnPressed;
@@ -31,9 +32,9 @@ class CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-            widget.title,
-            style: blackWeight500size16(),
-          ), 
+        widget.title,
+        style: blackWeight500size18(),
+      ),
       actions: [
         widget.exportOnPressed != null
             ? IconButton(

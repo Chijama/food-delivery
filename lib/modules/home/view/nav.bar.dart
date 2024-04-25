@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jammybread/modules/discover/view/discover.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
-import 'package:jammybread/modules/restaurant/view/restaurant.menu.screen.dart';
+import 'package:jammybread/modules/profile/view/profile.screen.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/textstyles.dart';
 import 'package:jammybread/utilities/colors.dart';
@@ -22,7 +22,7 @@ class _NavBarState extends State<NavBar> {
     const Discover(),
     const Text('Orders Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    const RestaurantMenu(),
+   const Profile(),
   ];
 
   void _onItemTapped(int index) {

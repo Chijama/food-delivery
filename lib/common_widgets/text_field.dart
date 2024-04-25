@@ -18,6 +18,7 @@ class InputField extends StatefulWidget {
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged;
+  final String? initialValue;
   const InputField({
     super.key,
     required this.labelText,
@@ -33,7 +34,7 @@ class InputField extends StatefulWidget {
     this.onTap,
     this.keyboardType,
     this.inputFormatters,
-    this.onChanged,
+    this.onChanged, this.initialValue,
   });
 
   @override
@@ -52,6 +53,7 @@ class _InputFieldState extends State<InputField> {
         const SizedBox(height: 8),
 
         TextFormField(
+          initialValue:widget.initialValue ,
           textAlign: TextAlign.start,
           textAlignVertical: TextAlignVertical.center,
           controller: widget.controller,

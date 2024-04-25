@@ -8,23 +8,31 @@ class UserRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   createUser(UserModel user, bool isLoading) async {
-     try {
+    try {
       await _db.collection("Users").add(user.toJson()).then((result) {
-        ShowSnackBar(message: 'Success: Your account has been created');
+        const ShowSnackBar(message: 'Success: Your account has been created');
       });
     } catch (e) {
-      ShowSnackBar(message: 'Error: Something went wrong. Try again.');
+      const ShowSnackBar(message: 'Error: Something went wrong. Try again.');
       print(e.toString());
       throw Exception('Failed to create user');
     }
-  //  await _db
-  //       .collection("Users")
-  //       .add(user.toJson())
-  //       .whenComplete(() =>  ShowSnackBar(
-  //           message: 'Success: Your account has been created'))
-  //       .catchError((error, stackTrace) {
-  //     ShowSnackBar(message: 'Error: Something went wromt. Try again.');
-  //     print(error.toString());
-  //   });
+  }
+
+  Future<UserModel> getUserDetails(String email) async {
+    final snapshot =
+        await _db.collection("Users").where("Email", isEqualTo: email).get();
+    final userData =
+        snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
+    return userData;
+  }
+    Future<List<UserModel>> allUser() async {
+    final snapshot =
+        await _db.collection("Users").get();
+    final userData =
+        snapshot.docs.map((e) => UserModel.fromSnapshot(e)).toList();
+    return userData;
   }
 }
+
+

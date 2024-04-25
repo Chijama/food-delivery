@@ -25,7 +25,7 @@ class AuthService {
     }
     //  catch any errors
     on FirebaseAuthException catch (e) {
-      ShowSnackBar(message:  e.toString());
+      ShowSnackBar(message: e.toString());
       throw Exception(e.code);
     }
   }
@@ -46,6 +46,7 @@ class AuthService {
     //  catch any errors
     on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
+      ShowSnackBar(message: ex.message);
       throw Exception(e.code);
     }
   }
@@ -61,7 +62,9 @@ class AuthService {
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           await _firebaseAuth.signInWithCredential(credential);
-          ShowSnackBar(message: "Phone number automatically verified and user signed in: ${_firebaseAuth.currentUser?.uid}");
+          ShowSnackBar(
+              message:
+                  "Phone number automatically verified and user signed in: ${_firebaseAuth.currentUser?.uid}");
         },
         codeSent: (verificationId, forceResendingToken) {
           this.verificationId.value = verificationId;
@@ -83,7 +86,7 @@ class AuthService {
 
     //  catch any errors
     on FirebaseAuthException catch (e) {
-      ShowSnackBar(message:  e.code);
+      ShowSnackBar(message: e.code);
       throw Exception(e.code);
     }
   }
@@ -94,21 +97,11 @@ class AuthService {
         PhoneAuthProvider.credential(
             verificationId: verificationId.value, smsCode: otp));
 
-            
     return credentials.user != null ? true : false;
   }
 
   // email sign out
   Future<void> signOut() async {
     return await _firebaseAuth.signOut();
-
-
-
   }
-
-
-  
-    
-
-  
 }

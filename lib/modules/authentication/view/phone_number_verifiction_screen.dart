@@ -145,7 +145,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       ),
                       PrimaryButton(
                         onPressed: () {
-                          print(otp);
+                          
                           PhoneVerificationController.instance
                               .verifyPhoneNumber(otp);
                         },

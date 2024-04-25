@@ -4,10 +4,10 @@ import 'package:jammybread/modules/authentication/view/phone_number_verifiction_
 import 'package:jammybread/modules/authentication/view/signup.screen.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/modules/discover/view/discover.dart';
-import 'package:jammybread/modules/discover/view/discover.search.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
 import 'package:jammybread/modules/profile/view/edit.profile.screen.dart';
+import 'package:jammybread/modules/profile/view/profile.screen.dart';
 import 'package:jammybread/services/auth_gate.dart';
 
 class AppRouter {
@@ -29,6 +29,7 @@ class AppRouter {
     // DiscoverSearch.routeName: (context) => const DiscoverSearch(),
 
     // Profile
+    Profile.routeName:(context) => const Profile(),
     EditProfile.routeName:(context) => const EditProfile(),
   };
 }
