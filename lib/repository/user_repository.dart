@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
-import 'package:jammybread/utilities/show_snack_bar.dart';
+import 'package:jammybread/utilities/helpers.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -11,10 +11,10 @@ class UserRepository extends GetxController {
   createUser(UserModel user, bool isLoading) async {
     try {
       await _db.collection("Users").add(user.toJson()).then((result) {
-        const ShowSnackBar(message: 'Success: Your account has been created');
+        Helpers().showSnackBar('Success: Your account has been created');
       });
     } catch (e) {
-      const ShowSnackBar(message: 'Error: Something went wrong. Try again.');
+       Helpers().showSnackBar('Error: Something went wrong. Try again.');
       debugPrint(e.toString());
       throw Exception('Failed to create user');
     }
@@ -45,6 +45,11 @@ class UserRepository extends GetxController {
   Future<void> updateUserRecord(UserModel user) async {
     debugPrint("THE IDDDDDD${user.id}");
 
-    await _db.collection("Users").doc(user.id).update(user.toJson());
+    await _db.collection("Users").doc(user.id). update(user.toJson());
+  }
+   Future<void> deleteUserRecord(UserModel user) async {
+    debugPrint("THE IDDDDDD${user.id}");
+
+    await _db.collection("Users").doc(user.id).delete();
   }
 }

@@ -6,8 +6,8 @@ import 'package:jammybread/repository/authentication_repository.dart';
 import 'package:jammybread/repository/user_repository.dart';
 import 'package:jammybread/modules/authentication/view/phone_number_verifiction_screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
-import 'package:jammybread/services/firebase_auth_methods.dart';
-import 'package:jammybread/utilities/show_snack_bar.dart';
+import 'package:jammybread/utilities/helpers.dart';
+
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
@@ -24,6 +24,8 @@ class SignUpController extends GetxController {
   RxString phoneNumber = ''.obs;
 
   final userRepo = Get.put(UserRepository());
+  final authRepo = Get.put(AuthenticationRepository());
+
 // Logic
 // For enabling or disabling the button
   Future<void> createUserWithPhoneverification(UserModel user) async {
@@ -32,7 +34,7 @@ class SignUpController extends GetxController {
     await userRepo.createUser(user, isLoading.value);
     debugPrint('create user done');
 
-    AuthenticationRepository.instance.phoneAuthentication(user.phoneNo);
+    authRepo.phoneAuthentication(user.phoneNo);
 
     isLoading(false);
     Get.toNamed(PhoneVerification.routeName, arguments: user.phoneNo);
@@ -56,8 +58,8 @@ class SignUpController extends GetxController {
     try {
       // Step 1: Authenticate the user first
       debugPrint('Authenticate user begin');
-      var authResult = await AuthService()
-          .signUpWithEmailPassword(user.email, user.password);
+      var authResult = await authRepo.createUserWithEmailAndPassword
+          (user.email, user.password);
       debugPrint('Authentication done');
 
       // Check if authentication was successful and user is returned
@@ -66,19 +68,19 @@ class SignUpController extends GetxController {
         // Step 2: Create user data in Firestore after successful authentication
         await userRepo.createUser(user, isLoading.value);
         debugPrint('Create user data done');
-        const ShowSnackBar(message: 'Success: Account created and user data saved!');
+        Helpers()
+            .showSnackBar('Success: Account created and user data saved!');
       } else {
         // Handle the case where no user is returned after authentication
         debugPrint('Authentication succeeded but no user returned');
-        const ShowSnackBar(
-            message: 'Authentication succeeded but no user data was returned.');
+Helpers().showSnackBar( 'Authentication succeeded but no user data was returned.');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         debugPrint('The account already exists for that email.');
       } else {
         debugPrint('Registration error: ${e.message}');
-        ShowSnackBar(message: 'Sign up failed: ${e.toString()}');
+        Helpers().showSnackBar('Sign up failed: ${e.toString()}');
       }
     } finally {
       debugPrint('Loading DONE');
@@ -88,6 +90,6 @@ class SignUpController extends GetxController {
   }
 
   void phoneAuthentication(String phone) {
-    AuthService().phoneAuthentication(phone);
+    authRepo.phoneAuthentication(phone);
   }
 }

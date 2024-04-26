@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jammybread/common_widgets/custom_button.dart';
 import 'package:jammybread/common_widgets/text_field.dart';
-import 'package:jammybread/services/firebase_auth_methods.dart';
 import 'package:jammybread/utilities/colors.dart';
 import 'package:jammybread/utilities/strings.dart';
 import 'package:jammybread/utilities/textstyles.dart';
@@ -96,10 +95,10 @@ class _LoginState extends State<Login> {
             isDisabled: isDisabled!,
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                AuthService().signInWithEmailPassword(
-                    emailController.value.text,
-                    passwordController.value.text,
-                    context);
+                // AuthService().signInWithEmailPassword(
+                //     emailController.value.text,
+                //     passwordController.value.text,
+                //     context);
               }
             },
             buttonText: 'Login',

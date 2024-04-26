@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/signup_email_password_failure.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
-import 'package:jammybread/utilities/show_snack_bar.dart';
+import 'package:jammybread/utilities/helpers.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -39,7 +39,7 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
 
-     debugPrint('FIREBASE AUTH EXCEPTION - ${e.message}');
+      debugPrint('FIREBASE AUTH EXCEPTION - ${e.message}');
 
       throw ex;
     } catch (_) {
@@ -59,8 +59,7 @@ class AuthenticationRepository extends GetxController {
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           await _auth.signInWithCredential(credential);
-          ShowSnackBar(
-              message:
+          Helpers().showSnackBar(
                   "Phone number automatically verified and user signed in: ${_auth.currentUser?.uid}");
         },
         codeSent: (verificationId, forceResendingToken) {
@@ -71,11 +70,9 @@ class AuthenticationRepository extends GetxController {
         },
         verificationFailed: (e) {
           if (e.code == 'Invalid-phone-number') {
-            ShowSnackBar(
-                message: 'Failed to verify phone number: ${e.message}');
+            Helpers().showSnackBar( 'Failed to verify phone number: ${e.message}');
           } else {
-            const ShowSnackBar(
-                message: 'Error: Somthing went wrong. Try again');
+            Helpers().showSnackBar( 'Error: Somthing went wrong. Try again');
           }
         },
       );
@@ -83,7 +80,7 @@ class AuthenticationRepository extends GetxController {
 
     //  catch any errors
     on FirebaseAuthException catch (e) {
-      ShowSnackBar(message: e.code);
+      Helpers().showSnackBar(e.code);
       throw Exception(e.code);
     }
   }

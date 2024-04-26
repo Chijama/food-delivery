@@ -8,7 +8,7 @@ import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
 import 'package:jammybread/modules/profile/view/edit.profile.screen.dart';
 import 'package:jammybread/modules/profile/view/profile.screen.dart';
-import 'package:jammybread/services/auth_gate.dart';
+
 
 class AppRouter {
   static Map<String, WidgetBuilder> routers = {
@@ -17,7 +17,7 @@ class AppRouter {
     HomeScreen.routeName: (context) => const HomeScreen(),
 
     // Authentication
-    AuthGate.routeName:(context) => const AuthGate(),
+    
     WelcomeScreen.routeName:(context) => const WelcomeScreen(),
     Login.routeName:(context) => const Login(),
     SignUp.routeName:(context)=> const SignUp(),

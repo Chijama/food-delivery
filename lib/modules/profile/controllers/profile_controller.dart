@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
 import 'package:jammybread/repository/authentication_repository.dart';
 import 'package:jammybread/repository/user_repository.dart';
-import 'package:jammybread/utilities/show_snack_bar.dart';
+import 'package:jammybread/utilities/helpers.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get instance => Get.find();
@@ -19,7 +19,7 @@ class ProfileController extends GetxController {
       return _userRepo.getUserDetails(email);
     } catch (e) {
       debugPrint('Error getting user data: $e');
-      const ShowSnackBar(message: "Error: Login to continue");
+       Helpers().showSnackBar("Error: Login to continue");
 
       rethrow; // Re-throw the error to be caught by FutureBuilder
     }
@@ -27,21 +27,20 @@ class ProfileController extends GetxController {
     // if (email != null) {
     //   return _userRepo.getUserDetails(email);
     // } else {
-    //   const ShowSnackBar(message: "Error: Login to continue");
+    //   const Helpers().showSnackBar( "Error: Login to continue");
     // }
   }
 
   updateRecord(UserModel user) async {
     try {
       await _userRepo.updateUserRecord(user);
-      const ShowSnackBar(
-        message: "Success",
-        success: true,
+      Helpers().showSnackBar( "Success",
+       isSuccess: true
       );
       debugPrint('Success');
     } catch (e) {
       debugPrint('Error updating user data: $e');
-      ShowSnackBar(message: "Error: $e");
+      Helpers().showSnackBar("Error: $e");
 
       rethrow; // Re-throw the error to be caught by FutureBuilder
     }
