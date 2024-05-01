@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:jammybread/modules/authentication/controller/mail_verification_controller.dart';
 import 'package:jammybread/modules/authentication/controller/sign_up_controller.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
 import 'package:jammybread/utilities/colors.dart';
@@ -154,6 +155,7 @@ class _SignUpState extends State<SignUp> {
                                       .trim());
                               debugPrint(
                                   'final number: ${controller.phoneNumber.value.trim()}');
+                             
                               SignUpController.instance
                                   .createrUserWithEmailSignIn(user);
                             }

@@ -10,8 +10,6 @@ class HomeScreen extends StatelessWidget {
   static const String routeName = '/home-screen';
   const HomeScreen({super.key});
 
-
-
   // Top Section
   Widget get topSection => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -70,7 +68,7 @@ class HomeScreen extends StatelessWidget {
               height: 21,
             ),
             Text(
-              '${getGreeting()} Joel',
+              '${getGreeting()} CHI',
               style: blackWeight400size33(),
             ),
             const SizedBox(
@@ -260,7 +258,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: SingleChildScrollView(
@@ -313,5 +310,3 @@ class HomeScreen extends StatelessWidget {
     }
   }
 }
-
-

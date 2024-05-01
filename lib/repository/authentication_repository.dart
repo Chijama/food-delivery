@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/signup_email_password_failure.dart';
+import 'package:jammybread/modules/authentication/view/mail_verification.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
 import 'package:jammybread/utilities/helpers.dart';
@@ -23,7 +24,9 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const WelcomeScreen())
-        : Get.offAll(() => const NavBar());
+        : user.emailVerified
+            ? Get.offAll(() => const NavBar())
+            : Get.offAll(() => const MailVerification());
   }
 
   Future<UserCredential> createUserWithEmailAndPassword(
@@ -60,7 +63,7 @@ class AuthenticationRepository extends GetxController {
         verificationCompleted: (credential) async {
           await _auth.signInWithCredential(credential);
           Helpers().showSnackBar(
-                  "Phone number automatically verified and user signed in: ${_auth.currentUser?.uid}");
+              "Phone number automatically verified and user signed in: ${_auth.currentUser?.uid}");
         },
         codeSent: (verificationId, forceResendingToken) {
           this.verificationId.value = verificationId;
@@ -70,9 +73,10 @@ class AuthenticationRepository extends GetxController {
         },
         verificationFailed: (e) {
           if (e.code == 'Invalid-phone-number') {
-            Helpers().showSnackBar( 'Failed to verify phone number: ${e.message}');
+            Helpers()
+                .showSnackBar('Failed to verify phone number: ${e.message}');
           } else {
-            Helpers().showSnackBar( 'Error: Somthing went wrong. Try again');
+            Helpers().showSnackBar('Error: Somthing went wrong. Try again');
           }
         },
       );
@@ -99,6 +103,18 @@ class AuthenticationRepository extends GetxController {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       // Handle the Firebase Auth exception
+    } catch (_) {
+      // Handle any other exceptions
+    }
+  }
+
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      // Handle the Firebase Auth exception
+      Helpers().showSnackBar(e.code);
+      throw Exception(e.code);
     } catch (_) {
       // Handle any other exceptions
     }

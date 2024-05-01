@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jammybread/modules/authentication/view/login.screen.dart';
+import 'package:jammybread/modules/authentication/view/mail_verification.dart';
 import 'package:jammybread/modules/authentication/view/phone_number_verifiction_screen.dart';
 import 'package:jammybread/modules/authentication/view/signup.screen.dart';
 import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
@@ -22,6 +23,7 @@ class AppRouter {
     Login.routeName:(context) => const Login(),
     SignUp.routeName:(context)=> const SignUp(),
     PhoneVerification.routeName:(context) => const PhoneVerification(phoneNo: '',),
+    MailVerification.routeName:(context)=>  const MailVerification(),
     // Onboarding
 
     // Discover
