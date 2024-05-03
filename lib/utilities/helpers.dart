@@ -14,6 +14,7 @@ class Helpers {
   void showSnackBar(String message, {bool isSuccess = false}) {
     Get.showSnackbar(
       GetSnackBar(
+
         messageText: Text(message,
             style: TextStyle(
                 color: isSuccess ? Colors.green : Colors.red,
@@ -21,7 +22,7 @@ class Helpers {
                 fontWeight: FontWeight.w500)),
         backgroundColor: Colors.white.withOpacity(0.9),
         duration:
-            Duration(seconds: 3), // Customize duration according to your need
+            Duration(seconds: 4), // Customize duration according to your need
         snackPosition:
             SnackPosition.BOTTOM, // Set the position of the snack bar
       ),

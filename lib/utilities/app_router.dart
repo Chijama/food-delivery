@@ -7,6 +7,7 @@ import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/modules/discover/view/discover.dart';
 import 'package:jammybread/modules/home/view/home.screen.dart';
 import 'package:jammybread/modules/home/view/nav.bar.dart';
+import 'package:jammybread/modules/onboarding/view/splash_screen.dart';
 import 'package:jammybread/modules/profile/view/edit.profile.screen.dart';
 import 'package:jammybread/modules/profile/view/profile.screen.dart';
 
@@ -25,7 +26,7 @@ class AppRouter {
     PhoneVerification.routeName:(context) => const PhoneVerification(phoneNo: '',),
     MailVerification.routeName:(context)=>  const MailVerification(),
     // Onboarding
-
+SplashScreen.routeName:(context) => SplashScreen(),
     // Discover
     Discover.routeName: (context) => const Discover(),
     // DiscoverSearch.routeName: (context) => const DiscoverSearch(),

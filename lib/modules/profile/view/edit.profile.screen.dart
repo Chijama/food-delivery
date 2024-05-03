@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/common_widgets/app.bar.dart';
@@ -6,6 +7,7 @@ import 'package:jammybread/modules/profile/controllers/profile_controller.dart';
 import 'package:jammybread/utilities/colors.dart';
 import 'package:jammybread/common_widgets/custom_button.dart';
 import 'package:jammybread/common_widgets/text_field.dart';
+import 'package:jammybread/utilities/textstyles.dart';
 
 class EditProfile extends StatefulWidget {
   static const String routeName = '/edit-profile';
@@ -35,16 +37,16 @@ class _EditProfileState extends State<EditProfile> {
             // Make sure to handle any errors here
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
-            UserModel userdata = snapshot.data!;
+            UserModel? userdata = snapshot.data;
             // Data from TextFields
             final TextEditingController emailController =
-                TextEditingController(text: userdata.email);
+                TextEditingController(text: userdata?.email);
             final TextEditingController passwordController =
-                TextEditingController(text: userdata.password);
+                TextEditingController(text: userdata?.password);
             final TextEditingController fullNameController =
-                TextEditingController(text: userdata.fullName);
+                TextEditingController(text: userdata?.fullName);
             final TextEditingController phoneController =
-                TextEditingController(text: userdata.phoneNo);
+                TextEditingController(text: userdata?.phoneNo);
 
             // Build your widgets here using userdata
             return LayoutBuilder(builder:
@@ -59,75 +61,92 @@ class _EditProfileState extends State<EditProfile> {
                     child: IntrinsicHeight(
                       child: Form(
                         key: formKey,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 24),
-                                  InputField(
-                                    labelText: 'Email Address',
-                                    controller: emailController,
-                                    onChanged: (value) {
-                                      controller.onChanged(value);
-                                    },
-                                  ),
-                                  InputField(
-                                    labelText: 'Full Name',
-                                    controller: fullNameController,
-                                    onChanged: (value) {
-                                      controller.onChanged(value);
-                                    },
-                                  ),
-                                  InputField(
-                                    labelText: 'Phone Number',
-                                    controller: phoneController,
-                                    onChanged: (value) {
-                                      controller.onChanged(value);
-                                    },
-                                  ),
-                                  InputField(
-                                    suffixIcon: true,
-                                    labelText: 'Password',
-                                    controller: passwordController,
-                                    onChanged: (value) {
-                                      controller.onChanged(value);
-                                    },
-                                  ),
-                                  const SizedBox(height: 38),
-                                ],
-                              ),
+                        child: Column(children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 24),
+                                InputField(
+                                  labelText: 'Email Address',
+                                  controller: emailController,
+                                  onChanged: (value) {
+                                    controller.onChanged(value);
+                                  },
+                                ),
+                                InputField(
+                                  labelText: 'Full Name',
+                                  controller: fullNameController,
+                                  onChanged: (value) {
+                                    controller.onChanged(value);
+                                  },
+                                ),
+                                InputField(
+                                  labelText: 'Phone Number',
+                                  controller: phoneController,
+                                  onChanged: (value) {
+                                    controller.onChanged(value);
+                                  },
+                                ),
+                                InputField(
+                                  suffixIcon: true,
+                                  labelText: 'Password',
+                                  controller: passwordController,
+                                  onChanged: (value) {
+                                    controller.onChanged(value);
+                                  },
+                                ),
+                                const SizedBox(height: 38),
+                              ],
                             ),
-                            Obx(() {
-                              return PrimaryButton(
-                                isDisabled: controller.isDisabled.value,
-                                onPressed: () async {
-                                  if (formKey.currentState!.validate()) {
-                                    final userData = UserModel(
-                                      id: userdata.id,
-                                        fullName: fullNameController.value.text,
-                                        email:
-                                            emailController.value.text.trim(),
-                                        phoneNo:
-                                            phoneController.value.text.trim(),
-                                        password:
-                                            passwordController.value.text);
-                                    await controller.updateRecord(userData);
-                                    //         );
-                                    // debugPrint(
-                                    //     'final number: ${controller.phoneNumber.value.trim()}');
-                                    // SignUpController.instance
-                                    //     .createUserWithPhoneverification(
-                                    //         user);
-                                  }
-                               
-                                },
-                                buttonText: 'Save Changes',
-                              );
-                            })
-                          ],
-                        ),
+                          ),
+                          Obx(() {
+                            return PrimaryButton(
+                              isDisabled: controller.isDisabled.value,
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  final userData = UserModel(
+                                      id: userdata!.id,
+                                      fullName: fullNameController.value.text,
+                                      email: emailController.value.text.trim(),
+                                      phoneNo:
+                                          phoneController.value.text.trim(),
+                                      password: passwordController.value.text);
+                                  await controller.updateRecord(userData);
+                                  //         );
+                                  // debugPrint(
+                                  //     'final number: ${controller.phoneNumber.value.trim()}');
+                                  // SignUpController.instance
+                                  //     .createUserWithPhoneverification(
+                                  //         user);
+                                }
+                              },
+                              buttonText: 'Save Changes',
+                            );
+                          }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              await controller.deleteRecord(userdata!.id);
+                            },
+                            child: Container(
+                                alignment: Alignment.center,
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.red),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Text(
+                                  'Delete Account',
+                                  style: whiteWeight500size14().copyWith(
+                                      fontSize: 16, color: Colors.red),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ]),
                       ),
                     ),
                   ),

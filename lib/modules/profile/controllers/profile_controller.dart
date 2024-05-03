@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/modules/authentication/models/user_model.dart';
+import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/repository/authentication_repository.dart';
 import 'package:jammybread/repository/user_repository.dart';
 import 'package:jammybread/utilities/helpers.dart';
@@ -19,7 +21,7 @@ class ProfileController extends GetxController {
       return _userRepo.getUserDetails(email);
     } catch (e) {
       debugPrint('Error getting user data: $e');
-       Helpers().showSnackBar("Error: Login to continue");
+      Helpers().showSnackBar("Error: Login to continue");
 
       rethrow; // Re-throw the error to be caught by FutureBuilder
     }
@@ -34,9 +36,7 @@ class ProfileController extends GetxController {
   updateRecord(UserModel user) async {
     try {
       await _userRepo.updateUserRecord(user);
-      Helpers().showSnackBar( "Success",
-       isSuccess: true
-      );
+      Helpers().showSnackBar("Success", isSuccess: true);
       debugPrint('Success');
     } catch (e) {
       debugPrint('Error updating user data: $e');
@@ -46,7 +46,37 @@ class ProfileController extends GetxController {
     }
   }
 
-  ValueController(dynamic initialValue) {
+ deleteRecord(String? userId) async {
+  if (userId == null) {
+    debugPrint("No user logged in");
+    Helpers().showSnackBar("No user logged in");
+    return;
+  }
+
+  try {
+    // First delete user data from Firestore
+    await _userRepo.deleteUserFromFirestore(userId);
+    debugPrint("User data deleted from Firestore");
+    
+    // Then delete user from Authentication
+    await _authRepo.deleteUserFromAuth();
+    debugPrint("User deleted from Authentication");
+
+    Helpers().showSnackBar("User completely removed from both Auth and Firestore");
+    _authRepo.logout(); // Ensure you logout the user and clear session
+
+  } catch (e) {
+    debugPrint('Error updating user data: $e');
+    Helpers().showSnackBar("Error updating user data: $e");
+    rethrow; // Re-throw the error to be caught by higher-level error handling mechanisms
+  } finally {
+    // Optionally navigate the user to the appropriate screen
+    _authRepo.setInitialScreen(null);
+  }
+}
+
+
+  valueController(dynamic initialValue) {
     _currentValue.value = initialValue;
   }
 
@@ -59,6 +89,12 @@ class ProfileController extends GetxController {
   }
 
   void logOut() async {
-    await AuthenticationRepository.instance.logout();
+    try {
+      await AuthenticationRepository.instance.logout();
+    } catch (e) {
+      Helpers().showSnackBar(e.toString());
+      rethrow;
+    }
+    Get.offAll(() => const WelcomeScreen());
   }
 }

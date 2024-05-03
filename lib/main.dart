@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jammybread/firebase_options.dart';
+import 'package:jammybread/modules/onboarding/view/splash_screen.dart';
 import 'package:jammybread/repository/authentication_repository.dart';
 import 'package:jammybread/repository/user_repository.dart';
-import 'package:jammybread/modules/authentication/view/welcome.screen.dart';
 import 'package:jammybread/utilities/app_router.dart';
 import 'package:jammybread/utilities/themes.dart';
 
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       routes: AppRouter.routers,
-      initialRoute: WelcomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       title: 'Flutter Demo',
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,

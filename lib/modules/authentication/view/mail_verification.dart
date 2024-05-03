@@ -26,7 +26,7 @@ class MailVerification extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             const Icon(Icons.email_outlined,
                 size: 80, color: Colors.black), // Icon at the top
             const SizedBox(height: 48),
@@ -47,7 +47,7 @@ class MailVerification extends StatelessWidget {
             SizedBox(
               width: 200,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () => controller.manuallyCheckEmailVerificationStatus,
                 child: Text('Continue', style: blackWeight400size14()),
               ),
             ),

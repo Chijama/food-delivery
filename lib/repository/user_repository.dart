@@ -52,4 +52,20 @@ class UserRepository extends GetxController {
 
     await _db.collection("Users").doc(user.id).delete();
   }
+
+  Future<void> deleteUserFromFirestore(String userId) async {
+  
+  try {
+    await _db.collection('users').doc(userId).delete();
+    debugPrint("User data deleted from Firestore");
+   
+
+  } catch (e) {
+    debugPrint("Error deleting user data from Firestore: $e");
+    Helpers().showSnackBar("Error deleting user data from Database: $e");
+
+    throw Exception('Failed to delete user data.');
+  }
+}
+
 }

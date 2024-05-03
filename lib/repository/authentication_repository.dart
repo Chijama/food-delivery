@@ -18,15 +18,18 @@ class AuthenticationRepository extends GetxController {
   void onReady() {
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.userChanges());
-    ever(firebaseUser, _setInitialScreen);
+    setInitialScreen(firebaseUser.value);
+    // ever(firebaseUser, setInitialScreen);
   }
 
-  _setInitialScreen(User? user) {
-    user == null
-        ? Get.offAll(() => const WelcomeScreen())
-        : user.emailVerified
-            ? Get.offAll(() => const NavBar())
-            : Get.offAll(() => const MailVerification());
+  void setInitialScreen(User? user) {
+    if (user == null) {
+      Get.offAll(() => const WelcomeScreen());
+    } else if (!user.emailVerified) {
+      Get.offAll(() => const MailVerification());
+    } else {
+      Get.offAll(() => const NavBar());
+    }
   }
 
   Future<UserCredential> createUserWithEmailAndPassword(
@@ -34,20 +37,23 @@ class AuthenticationRepository extends GetxController {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
+      // Send verification email
+      await sendEmailVerification();
 
-      firebaseUser.value != null
-          ? Get.offAll(() => const NavBar())
-          : Get.to(() => const WelcomeScreen());
+      // After signing up, check the email verified status
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-
       debugPrint('FIREBASE AUTH EXCEPTION - ${e.message}');
+      Helpers().showSnackBar(e.message.toString());
 
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();
       debugPrint('EXCEPTION - ${ex.message}');
+      Get.offAll(() => const WelcomeScreen());
+
       throw ex;
     }
   }
@@ -103,24 +109,47 @@ class AuthenticationRepository extends GetxController {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       // Handle the Firebase Auth exception
-    } catch (_) {
-      // Handle any other exceptions
+
+      throw Exception(e.code);
     }
   }
 
   Future<void> sendEmailVerification() async {
-    try {
-      await _auth.currentUser?.sendEmailVerification();
-    } on FirebaseAuthException catch (e) {
-      // Handle the Firebase Auth exception
-      Helpers().showSnackBar(e.code);
-      throw Exception(e.code);
-    } catch (_) {
-      // Handle any other exceptions
+    if (_auth.currentUser != null) {
+      if (!_auth.currentUser!.emailVerified) {
+        try {
+          debugPrint(_auth.currentUser?.email);
+          await _auth.currentUser?.sendEmailVerification();
+          Get.toNamed(MailVerification.routeName);
+        } on FirebaseAuthException catch (e) {
+          // Handle the Firebase Auth exception
+          Helpers().showSnackBar(e.code);
+          throw Exception(e.code);
+        } catch (_) {
+          // Handle any other exceptions
+        }
+      } else {
+        Get.offAll(() => const NavBar());
+      }
+    } else {
+      Get.offAll(() => const WelcomeScreen());
     }
   }
 
   Future<void> logout() async {
     await _auth.signOut();
+  }
+
+  Future<void> deleteUserFromAuth() async {
+    try {
+      await _auth.currentUser?.delete();
+      debugPrint("User deleted from Authentication");
+    } on FirebaseAuthException catch (e) {
+      // Handling errors, e.g., requiring recent login
+      Helpers().showSnackBar("Error deleting user from auth: ${e.message}");
+
+      debugPrint("Error deleting user from auth: ${e.message}");
+      throw Exception('Please re-authenticate before deleting your account.');
+    }
   }
 }

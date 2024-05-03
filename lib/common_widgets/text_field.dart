@@ -99,19 +99,20 @@ class _InputFieldState extends State<InputField> {
             hintStyle: darkWeight500size12(),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 0.0, horizontal: 14.0),
-            border: InputBorder.none,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(8),
+            ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: dark100, width: 1.2),
+              borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: Colors.transparent, width: 2.0),
+              borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: Colors.transparent, width: 2.0),
+              borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(8),
             ),
           ),
